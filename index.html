@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L&amp;K Wellness &middot; Playa Vista &middot; Investor &amp; SBA Brief</title>
+<meta name="description" content="A licensed rejuvenation clinic inside a social club. Playa Vista, California.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Identity palette. Ground is true black so forest reads as a surface
+     sitting on the page rather than as the page itself. */
+  --ground:#000000;
+  --forest:#16241C;
+  --eucalyptus:#2E4237;
+  --bone:#EDE6DA;
+  --rose:#C08D7C;
+
+  --bone-dim:rgba(237,230,218,0.62);
+  --bone-faint:rgba(237,230,218,0.34);
+  --line:rgba(46,66,55,0.9);
+  --radius:12px;
+  --pad-sec:clamp(56px,8vw,104px);
+  --maxw:1180px;
+
+  --display:'Space Grotesk',system-ui,-apple-system,Segoe UI,sans-serif;
+  --body:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--ground);
+  color:var(--bone);
+  font-family:var(--body);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* Forest wash. Kept subtle; the vignette does the depth work. */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(70vw 60vw at 78% -12%, rgba(46,66,55,0.55), transparent 62%),
+    radial-gradient(60vw 55vw at -12% 108%, rgba(22,36,28,0.85), transparent 60%),
+    var(--ground);
+}
+/* Grain. This is dithering, not decoration: a forest-to-black gradient
+   bands visibly on 8-bit displays and a 1px noise layer is the fix. */
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0.05;
+  background-image:radial-gradient(rgba(237,230,218,0.5) 1px,transparent 1px);
+  background-size:3px 3px;
+}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;height:auto}
+::selection{background:var(--rose);color:var(--ground)}
+
+/* ---------------- NAV ---------------- */
+header{
+  position:sticky;top:0;z-index:120;
+  background:rgba(0,0,0,0.86);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+}
+.nav-inner{
+  max-width:var(--maxw);margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:12px 24px;
+}
+.logo{font-family:var(--display);font-weight:500;font-size:1rem;letter-spacing:2px;line-height:1.1;white-space:nowrap}
+.logo small{display:block;color:var(--bone-faint);font-weight:400;font-size:.56rem;letter-spacing:3px;text-transform:uppercase;margin-top:3px}
+.logo .amp{color:var(--rose)}
+
+nav.secnav{display:flex;gap:2px;flex-wrap:wrap;overflow-x:auto;scrollbar-width:none}
+nav.secnav::-webkit-scrollbar{display:none}
+nav.secnav a{
+  font-family:var(--display);font-size:.74rem;font-weight:400;letter-spacing:.5px;
+  color:var(--bone-dim);padding:7px 11px;border-radius:999px;white-space:nowrap;
+  transition:color .2s ease,background .2s ease;
+}
+nav.secnav a:hover{color:var(--bone);background:var(--forest)}
+nav.secnav a.on{color:var(--ground);background:var(--rose)}
+
+/* Scenario badge. Each site is a single case; the other lives in its own
+   folder with its own deck. */
+.scenbadge{
+  display:flex;align-items:center;gap:9px;flex-shrink:0;
+  border:1px solid var(--rose);border-radius:999px;padding:6px 14px;
+  background:rgba(192,141,124,0.12);
+}
+.scenbadge .dot{width:6px;height:6px;border-radius:50%;background:var(--rose);flex-shrink:0}
+.scenbadge .t{font-family:var(--display);font-size:.72rem;font-weight:500;letter-spacing:.8px;color:var(--rose);white-space:nowrap}
+
+/* Toggle, shown instead of the badge when a build offers more than one
+   capital structure for the same business. */
+.scenswitch{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.scenswitch .lbl{font-family:var(--display);font-size:.56rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--bone-faint);white-space:nowrap}
+.switch{display:flex;border:1px solid var(--eucalyptus);border-radius:999px;overflow:hidden;background:var(--forest)}
+.switch button{
+  font-family:var(--display);font-size:.72rem;font-weight:500;letter-spacing:.6px;
+  background:none;border:none;color:var(--bone-dim);cursor:pointer;
+  padding:7px 14px;transition:.2s;white-space:nowrap;
+}
+.switch button[aria-pressed="true"]{background:var(--rose);color:var(--ground)}
+
+/* ---------------- LAYOUT ---------------- */
+main{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+section{padding:var(--pad-sec) 0;scroll-margin-top:120px;border-top:1px solid var(--line)}
+section:first-of-type{border-top:none}
+.eyebrow{
+  font-family:var(--display);color:var(--rose);font-weight:500;font-size:.66rem;
+  letter-spacing:3.4px;text-transform:uppercase;margin-bottom:16px;
+}
+h1{font-family:var(--display);font-size:clamp(2.1rem,6.5vw,4.4rem);font-weight:500;line-height:1.02;letter-spacing:-1.5px}
+h2{font-family:var(--display);font-size:clamp(1.55rem,4vw,2.5rem);font-weight:500;line-height:1.12;letter-spacing:-.6px;margin-bottom:10px}
+h3{font-family:var(--display);font-size:1.1rem;font-weight:500;letter-spacing:-.2px;margin-bottom:6px}
+h4{font-family:var(--display);font-size:.9rem;font-weight:500;letter-spacing:.3px}
+p.lead{color:var(--bone-dim);font-size:clamp(1rem,1.7vw,1.16rem);max-width:74ch}
+p+p{margin-top:14px}
+.muted{color:var(--bone-dim)}
+.faint{color:var(--bone-faint)}
+.rose{color:var(--rose)}
+.mt{margin-top:16px}.mt2{margin-top:30px}.mt3{margin-top:48px}
+.num{font-variant-numeric:tabular-nums}
+.small{font-size:.88rem}
+.xs{font-size:.8rem}
+
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+/* A 1fr track defaults to min-width:auto and refuses to shrink below its
+   content's min-content width, so a wide table inside a grid cell blows the
+   whole page out horizontally. Every grid child has to be allowed to shrink
+   so the scroll happens inside .tablewrap where it belongs. */
+.grid>*,.tiergrid>*,.band>*,.risk>*,.timeline>*,.hero-metrics>*,.ask-grid>*{min-width:0}
+
+.card{
+  background:var(--forest);
+  border:1px solid var(--eucalyptus);
+  border-radius:var(--radius);
+  padding:24px;
+}
+.card.accent{border-color:var(--rose)}
+
+/* Two-column label/value row, used in several cards. */
+.kv{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed rgba(46,66,55,0.8);font-size:.88rem}
+.kv:last-child{border-bottom:none}
+.kv span{color:var(--bone-dim)}
+.kv b{font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.proj-tag{
+  display:inline-block;font-family:var(--display);font-size:.56rem;font-weight:500;
+  letter-spacing:1.6px;text-transform:uppercase;color:var(--bone-faint);
+  background:rgba(46,66,55,0.5);border:1px solid var(--eucalyptus);
+  padding:3px 8px;border-radius:4px;vertical-align:middle;margin-left:8px;
+}
+.pill{
+  display:inline-block;font-family:var(--display);font-size:.6rem;font-weight:500;
+  letter-spacing:1.6px;text-transform:uppercase;padding:4px 10px;border-radius:999px;
+  border:1px solid var(--eucalyptus);color:var(--bone-dim);
+}
+.pill.on{background:var(--rose);color:var(--ground);border-color:var(--rose)}
+
+/* ---------------- HERO ---------------- */
+.hero{padding-top:clamp(48px,8vh,92px)}
+.hero h1 .amp{color:var(--rose)}
+.hero-rule{width:64px;height:3px;background:var(--rose);border-radius:2px;margin-top:26px}
+.hero-claim{
+  font-family:var(--display);font-weight:400;margin-top:26px;
+  font-size:clamp(1.08rem,2.2vw,1.5rem);line-height:1.4;max-width:44ch;
+}
+.hero-claim em{font-style:normal;color:var(--rose)}
+.est{display:flex;gap:8px 20px;flex-wrap:wrap;margin-top:26px;color:var(--bone-faint);font-family:var(--display);font-size:.68rem;letter-spacing:2.2px;text-transform:uppercase}
+.est span{display:flex;align-items:center;gap:8px}
+.est i{width:5px;height:5px;border-radius:50%;background:var(--rose);font-style:normal;flex-shrink:0}
+.hero-metrics{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:18px;
+  margin-top:46px;border-top:1px solid var(--line);padding-top:28px;
+}
+.hm-n{font-family:var(--display);font-size:clamp(1.4rem,3.4vw,2.1rem);font-weight:500;color:var(--rose);letter-spacing:-1px;line-height:1}
+.hm-l{color:var(--bone-dim);font-size:.78rem;margin-top:7px;line-height:1.35}
+
+/* ---------------- STATS ---------------- */
+.statcard .n{font-family:var(--display);font-size:clamp(2.1rem,5vw,3.1rem);font-weight:500;color:var(--rose);line-height:1;letter-spacing:-1.5px}
+.statcard .l{color:var(--bone-dim);margin-top:12px;font-size:.94rem}
+
+/* ---------------- TWO-LAYER DIAGRAM ---------------- */
+.layers{margin-top:34px;display:flex;flex-direction:column;align-items:center}
+.layer{width:100%;border-radius:var(--radius);padding:24px}
+.layer .tag{font-family:var(--display);font-size:.6rem;letter-spacing:2.6px;text-transform:uppercase;margin-bottom:10px}
+.layer .who{font-size:.86rem;margin-top:2px}
+.layer-club{
+  width:min(100%,660px);
+  background:linear-gradient(180deg,rgba(192,141,124,0.16),var(--forest));
+  border:1px solid var(--rose);
+}
+.layer-club .tag{color:var(--rose)}
+.layer-clinic{background:var(--forest);border:1px solid var(--eucalyptus)}
+.layer-clinic .tag{color:var(--bone-faint)}
+.layer-join{
+  font-family:var(--display);font-size:.62rem;letter-spacing:2.4px;text-transform:uppercase;
+  color:var(--bone-faint);padding:14px 0;display:flex;align-items:center;gap:12px;text-align:center;
+}
+.layer-join::before,.layer-join::after{content:"";height:1px;width:40px;background:var(--eucalyptus);flex-shrink:0}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.chip{
+  font-size:.76rem;padding:5px 11px;border-radius:999px;
+  border:1px solid var(--eucalyptus);color:var(--bone-dim);background:rgba(0,0,0,0.25);
+}
+.chip.r{border-color:rgba(192,141,124,0.55);color:var(--rose)}
+
+/* ---------------- TIERS ---------------- */
+/* Column count follows the number of tiers actually on offer, ample dropped to
+   three when the Day Pass was withdrawn. Set via a custom property, not an
+   inline style, so the mobile breakpoints below can still override it. */
+.tiergrid{display:grid;grid-template-columns:repeat(var(--tier-cols,4),1fr);gap:16px;margin-top:30px}
+.tier{
+  background:var(--forest);border:1px solid var(--eucalyptus);border-radius:var(--radius);
+  padding:22px;display:flex;flex-direction:column;
+}
+.tier.hero-tier{border-color:var(--rose);background:linear-gradient(180deg,rgba(192,141,124,0.12),var(--forest))}
+.tier .tname{font-family:var(--display);font-size:1.02rem;font-weight:500;letter-spacing:.2px}
+.tier .tprice{font-family:var(--display);font-size:1.9rem;font-weight:500;color:var(--rose);letter-spacing:-1px;margin-top:10px;line-height:1}
+.tier .tcad{font-family:var(--display);font-size:.7rem;color:var(--bone-faint);letter-spacing:1.4px;text-transform:uppercase;margin-top:5px}
+.tier .tblurb{color:var(--bone-dim);font-size:.84rem;margin-top:12px;min-height:2.6em}
+.tier ul{list-style:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--eucalyptus);display:flex;flex-direction:column;gap:8px}
+.tier li{font-size:.82rem;color:var(--bone-dim);padding-left:16px;position:relative;line-height:1.45}
+.tier li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--rose)}
+.tier .tcount{margin-top:auto;padding-top:16px;font-family:var(--display);font-size:.72rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--bone-faint)}
+.tier .tcount b{color:var(--bone);font-weight:500}
+
+/* ---------------- TABLES ---------------- */
+.tablewrap{
+  overflow-x:auto;border:1px solid var(--eucalyptus);border-radius:var(--radius);
+  background-color:var(--forest);
+  background-image:
+    linear-gradient(to right,var(--forest) 32%,rgba(22,36,28,0)),
+    linear-gradient(to left,var(--forest) 32%,rgba(22,36,28,0)),
+    linear-gradient(to right,rgba(192,141,124,.35),rgba(192,141,124,0)),
+    linear-gradient(to left,rgba(192,141,124,.35),rgba(192,141,124,0));
+  background-position:left center,right center,left center,right center;
+  background-repeat:no-repeat;
+  background-size:30px 100%,30px 100%,14px 100%,14px 100%;
+  background-attachment:local,local,scroll,scroll;
+}
+.tablewrap.plain{border:none;background:none}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:.86rem}
+.tablewrap.plain table{min-width:0}
+th,td{padding:11px 14px;text-align:left;border-bottom:1px solid rgba(46,66,55,0.6);white-space:nowrap}
+th{
+  font-family:var(--display);color:var(--rose);font-weight:500;font-size:.66rem;
+  letter-spacing:1.6px;text-transform:uppercase;background:rgba(0,0,0,0.3);
+}
+tbody tr:hover{background:rgba(46,66,55,0.35)}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+tr.total td{font-weight:700;color:var(--rose);border-top:1.5px solid var(--rose);background:rgba(192,141,124,0.08)}
+tr.sub td{font-family:var(--display);font-size:.66rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--bone-faint);background:rgba(46,66,55,0.4)}
+tr.neg td.n{color:var(--bone-dim)}
+caption{caption-side:bottom;text-align:left;padding:12px 14px;font-size:.76rem;color:var(--bone-faint);line-height:1.5}
+
+/* ---------------- WATERFALL ---------------- */
+.waterfall{display:flex;flex-direction:column;gap:2px;margin-top:26px}
+.wf-row{
+  display:grid;grid-template-columns:1fr auto;gap:14px;align-items:baseline;
+  padding:13px 18px;border:1px solid var(--eucalyptus);border-radius:8px;background:var(--forest);
+}
+.wf-row.minus{background:rgba(0,0,0,0.35);border-style:dashed}
+.wf-row.plus{background:rgba(46,66,55,0.55)}
+.wf-row.sum{border-color:var(--rose);background:rgba(192,141,124,0.1)}
+.wf-row .k{font-size:.9rem}
+.wf-row .k small{display:block;color:var(--bone-faint);font-size:.74rem;margin-top:3px;line-height:1.4}
+.wf-row .v{font-family:var(--display);font-size:1.02rem;font-variant-numeric:tabular-nums;white-space:nowrap}
+.wf-row.sum .v{color:var(--rose);font-size:1.24rem}
+.wf-row.minus .v{color:var(--bone-dim)}
+
+/* ---------------- RAMP CHART ---------------- */
+.rampwrap{overflow-x:auto;border:1px solid var(--eucalyptus);border-radius:var(--radius);background:var(--forest);padding:22px}
+.ramp{display:flex;align-items:stretch;gap:3px;min-width:660px;height:220px}
+.rbar{flex:1;display:flex;flex-direction:column;height:100%;position:relative}
+.rbar .pos{display:flex;flex-direction:column;justify-content:flex-end}
+.rbar .neg{display:flex;flex-direction:column;justify-content:flex-start;border-top:1px solid var(--eucalyptus)}
+.rbar .fill-up{background:linear-gradient(180deg,var(--rose),rgba(192,141,124,0.45));border-radius:2px 2px 0 0}
+.rbar .fill-dn{background:rgba(46,66,55,0.95);border-radius:0 0 2px 2px}
+.rbar .m{position:absolute;bottom:-20px;left:0;right:0;text-align:center;font-size:.56rem;color:var(--bone-faint);font-variant-numeric:tabular-nums}
+.ramp-legend{display:flex;gap:8px 18px;flex-wrap:wrap;margin-top:32px;font-size:.76rem;color:var(--bone-dim)}
+.ramp-legend span{display:flex;align-items:center;gap:7px}
+.ramp-legend i{width:11px;height:11px;border-radius:3px;font-style:normal;flex-shrink:0}
+
+/* ---------------- SCENARIO BAND ---------------- */
+.band{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px}
+.bandcard{border:1px solid var(--eucalyptus);border-radius:var(--radius);padding:24px;background:var(--forest);position:relative}
+.bandcard.base{border-color:var(--rose);box-shadow:0 0 0 1px var(--rose)}
+.bandcard .bt{font-family:var(--display);font-size:.64rem;letter-spacing:2.4px;text-transform:uppercase;color:var(--bone-faint)}
+.bandcard.base .bt{color:var(--rose)}
+.bandcard .bh{font-family:var(--display);font-size:clamp(1.5rem,3vw,1.95rem);font-weight:500;letter-spacing:-1px;margin:8px 0 2px;line-height:1.05}
+.bandcard.base .bh{color:var(--rose)}
+.bandcard .bs{color:var(--bone-faint);font-size:.76rem;margin-bottom:16px;line-height:1.45;min-height:3.2em}
+.bandcard .pin{position:absolute;top:-10px;right:16px;background:var(--rose);color:var(--ground);font-family:var(--display);font-size:.56rem;font-weight:500;letter-spacing:1.6px;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+
+/* ---------------- ASK ---------------- */
+.askblock{border:1px solid var(--rose);border-radius:16px;padding:clamp(26px,4vw,44px);background:linear-gradient(180deg,rgba(192,141,124,0.13),var(--forest));margin-top:30px}
+.ask-amt{font-family:var(--display);font-size:clamp(2.6rem,8vw,4.6rem);font-weight:500;color:var(--rose);letter-spacing:-2.5px;line-height:1}
+.ask-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:30px;padding-top:26px;border-top:1px solid rgba(192,141,124,0.35)}
+.ask-grid .k{font-family:var(--display);font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--bone-faint)}
+.ask-grid .v{font-family:var(--display);font-size:1.1rem;margin-top:7px;line-height:1.25}
+
+/* ---------------- TIMELINE ---------------- */
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:34px}
+.tl{position:relative;padding:26px 16px 0;border-top:1px solid var(--eucalyptus)}
+.tl::before{content:"";position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--rose)}
+.tl .w{font-family:var(--display);font-size:.62rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--rose)}
+.tl h4{margin:8px 0 6px}
+.tl p{font-size:.82rem;color:var(--bone-dim);line-height:1.5}
+
+/* ---------------- MARKET / SOURCES ---------------- */
+.mkt{border:1px solid var(--eucalyptus);border-radius:var(--radius);padding:22px;background:var(--forest);display:flex;flex-direction:column}
+.mkt .v{font-family:var(--display);font-size:clamp(1.7rem,3.6vw,2.3rem);font-weight:500;color:var(--rose);letter-spacing:-1px;line-height:1}
+.mkt .l{font-size:.9rem;margin-top:10px;line-height:1.4}
+.mkt .nt{font-size:.79rem;color:var(--bone-dim);margin-top:10px;line-height:1.5}
+.src{margin-top:auto;padding-top:14px;font-size:.68rem;color:var(--bone-faint);line-height:1.4}
+.src a{border-bottom:1px solid rgba(192,141,124,0.4);color:var(--rose)}
+.src a:hover{border-bottom-color:var(--rose)}
+
+/* ---------------- RISK ---------------- */
+.risk{display:grid;grid-template-columns:1fr 1.25fr;gap:0;border:1px solid var(--eucalyptus);border-radius:var(--radius);overflow:hidden;margin-top:30px}
+.risk>div{padding:18px 20px;border-bottom:1px solid var(--eucalyptus)}
+.risk>div:nth-child(odd){background:rgba(0,0,0,0.28);border-right:1px solid var(--eucalyptus)}
+.risk .rh{font-family:var(--display);font-size:.62rem;letter-spacing:2.2px;text-transform:uppercase;color:var(--rose)}
+.risk .rt{font-size:.9rem;line-height:1.5}
+.risk .rm{font-size:.88rem;color:var(--bone-dim);line-height:1.55}
+
+/* ---------------- PROCEDURE MENU ---------------- */
+.proclist{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:9px}
+.proclist li{font-size:.87rem;color:var(--bone-dim);padding-left:17px;position:relative;line-height:1.45}
+.proclist li::before{content:"";position:absolute;left:0;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--rose)}
+.srclink{border-bottom:1px solid rgba(192,141,124,0.4);color:var(--rose)}
+.srclink:hover{border-bottom-color:var(--rose)}
+
+/* ---------------- DISCLOSURE LIST ---------------- */
+.disc p{font-size:.88rem;padding-left:18px;position:relative;margin-top:14px;line-height:1.6;color:var(--bone-dim)}
+.disc p::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--rose)}
+
+/* ---------------- CTA / FOOTER ---------------- */
+.cta{border:1px solid var(--rose);border-radius:16px;padding:clamp(32px,5vw,58px);text-align:center;background:linear-gradient(180deg,rgba(192,141,124,0.14),var(--forest))}
+.cta .lead{margin-left:auto;margin-right:auto}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;margin-top:26px;
+  font-family:var(--display);font-weight:500;font-size:.95rem;letter-spacing:.4px;
+  padding:15px 30px;border-radius:999px;background:var(--rose);color:var(--ground);
+  border:1px solid var(--rose);transition:.2s;cursor:pointer;
+}
+.btn:hover{background:transparent;color:var(--rose)}
+.btn-ghost{background:none;color:var(--bone);border-color:var(--eucalyptus)}
+.btn-ghost:hover{background:none;border-color:var(--rose);color:var(--rose)}
+.herobtns{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.herobtns .btn{margin-top:0}
+
+footer{
+  max-width:var(--maxw);margin:0 auto;padding:40px 24px 60px;
+  border-top:1px solid var(--line);color:var(--bone-faint);
+  font-family:var(--display);font-size:.68rem;letter-spacing:1.6px;text-transform:uppercase;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+}
+.disclaimer{max-width:var(--maxw);margin:0 auto;padding:0 24px 40px;color:var(--bone-faint);font-size:.72rem;line-height:1.65}
+
+/* The methodology link has to out-read the footer's legal chrome or nobody
+   registers it as clickable. Larger, sentence case, rose, underlined. */
+.methodlink{
+  font-family:var(--display);font-size:1rem;font-weight:500;
+  letter-spacing:.3px;text-transform:none;white-space:nowrap;
+  color:var(--rose);border-bottom:1px solid rgba(192,141,124,.55);
+  padding-bottom:3px;transition:color .2s ease,border-color .2s ease;
+}
+.methodlink:hover{color:var(--bone);border-bottom-color:var(--bone)}
+.methodlink .arw{display:inline-block;margin-left:6px;transition:transform .2s ease}
+.methodlink:hover .arw{transform:translateX(3px)}
+
+a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:4px}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media(max-width:1024px){
+  .g4,.tiergrid,.ask-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-metrics{grid-template-columns:repeat(2,1fr)}
+  .timeline{grid-template-columns:repeat(2,1fr)}
+  nav.secnav{display:none}
+}
+@media(max-width:768px){
+  .nav-inner{padding:10px 18px;gap:12px}
+  main{padding:0 18px}
+  .g2,.g3,.band,.risk{grid-template-columns:1fr}
+  .risk>div:nth-child(odd){border-right:none}
+  .layer-club{width:100%}
+  .scenbadge{padding:5px 10px}
+  .scenbadge .t{font-size:.64rem}
+  /* Logo plus a two-button toggle does not fit a phone header on one line.
+     Drop the "Private raise" caption and let the row wrap rather than
+     pushing the page into horizontal scroll. */
+  .nav-inner{flex-wrap:wrap;row-gap:8px}
+  .scenswitch .lbl{display:none}
+  .switch button{padding:6px 10px;font-size:.64rem}
+  footer{padding:32px 18px 48px;flex-direction:column;gap:10px}
+  .disclaimer{padding:0 18px 32px}
+}
+@media(max-width:480px){
+  .g4,.tiergrid,.ask-grid,.hero-metrics,.timeline{grid-template-columns:1fr}
+  .card{padding:20px}
+  .switch button{padding:5px 9px;font-size:.6rem;letter-spacing:0}
+  .logo{font-size:.84rem;letter-spacing:1px}
+  .btn{width:100%;justify-content:center}
+}
+@media(min-width:1441px){ :root{--maxw:1280px} }
+@media(min-width:1920px){
+  :root{--maxw:1400px}
+  body{font-size:17px}
+}
+
+@media print{
+  body::before,body::after{display:none}
+  header{position:static}
+  body{background:#fff;color:#111}
+  .card,.tier,.mkt,.bandcard,.askblock,.cta,.tablewrap,.rampwrap{background:#fff;border-color:#bbb}
+  section{page-break-inside:avoid;border-top:1px solid #ccc}
+  nav.secnav{display:none}
+  /* Keep the scenario badge in print, a printed brief must say which case
+     it is on every copy. */
+  .scenbadge{border-color:#999}
+  .scenbadge .t{color:#111}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">L<span class="amp">&amp;</span>K WELLNESS<small>Playa Vista, CA</small></div>
+    <nav class="secnav" id="secnav">
+      <a href="#model">Model</a>
+      <a href="#surgery" hidden>Surgery</a>
+      <a href="#membership">Membership</a>
+      <a href="#space">Space</a>
+      <a href="#market">Category</a><a href="#catchment">Market</a>
+      <a href="#economics">Economics</a>
+      <a href="#ramp">Ramp</a>
+      <a href="#ask">Ask</a>
+      <a href="#sba" id="navSba">SBA</a>
+      <a href="#team">Team</a>
+    </nav>
+    <div id="scenControl"></div>
+  </div>
+</header>
+
+<main>
+
+<!-- 1 · HERO -->
+<section class="hero" id="top">
+  <div class="eyebrow" id="heroEyebrow">Confidential Investor &amp; SBA Brief</div>
+  <h1>A licensed clinic<br>inside a private club.</h1>
+  <div class="hero-rule"></div>
+  <p class="hero-claim">The medicine is <em>open to everyone.</em> The room you want to stay in is <em>members only.</em></p>
+  <div class="est">
+    <span><i></i>Playa Vista, California</span>
+    <span><i></i><b data-lk="sqft|sqft"></b></span>
+    <span><i></i>Est. 2026</span>
+  </div>
+  <div class="herobtns">
+    <a class="btn" href="#ask">See the ask</a>
+    <a class="btn btn-ghost" href="#model">How it works</a>
+  </div>
+  <div class="hero-metrics">
+    <div><div class="hm-n" data-lk="revenueAnnual|moneyM"></div><div class="hm-l">Revenue at stabilization<span class="proj-tag">Projected</span></div></div>
+    <div><div class="hm-n" data-lk="blendedMargin|pct0"></div><div class="hm-l">Blended margin after COGS</div></div>
+    <div><div class="hm-n" data-lk="membershipRevenue|moneyK"></div><div class="hm-l">Recurring membership revenue per month</div></div>
+    <div><div class="hm-n" data-lk="dscr|x" id="heroCovN"></div><div class="hm-l" id="heroCovL">Stabilized debt service coverage</div></div>
+  </div>
+</section>
+
+<!-- 2 · PROBLEM -->
+<section id="problem">
+  <div class="eyebrow">The problem</div>
+  <h2>Wellness on the Westside is fragmented, and none of it is a place you want to stay.</h2>
+  <p class="lead mt">A patient optimizing their health today visits a medspa for injectables, a recovery studio for cold plunge, a longevity clinic for labs, and a concierge doctor for hormones. Four intakes, four records, four bills, four waiting rooms. Not one of them is somewhere you would choose to spend a Saturday morning.</p>
+  <div class="grid g3 mt2">
+    <div class="card statcard"><div class="n">4+</div><div class="l">Separate providers a patient coordinates for care that belongs in one building.</div></div>
+    <div class="card statcard"><div class="n" id="scopeN"></div><div class="l" id="scopeL"></div></div>
+    <div class="card statcard"><div class="n">10,488</div><div class="l">US medical spas as of 2023, up from 8,899 the year before. The category is commoditizing on treatment alone.</div></div>
+  </div>
+</section>
+
+<!-- 3 · THE INSIGHT -->
+<section id="insight">
+  <div class="eyebrow">The insight</div>
+  <h2>Others proved the format. Only a licensed facility can deliver it.</h2>
+  <div class="grid g2 mt2">
+    <div class="card">
+      <div class="pill">Remedy Place</div>
+      <h3 class="mt">Where a non-medical operator stops.</h3>
+      <p class="muted mt">They proved the social wellness format works commercially, and they built it well. What they cannot do is medicine. No physician on site means no PRP, no IV therapy, no neuromodulators, no filler, no laser. Those are not features they chose to skip. They sit on the other side of a licensing and supervision threshold.</p>
+    </div>
+    <div class="card">
+      <div class="pill">Soho House</div>
+      <h3 class="mt">Where the ladder was proven.</h3>
+      <p class="muted mt">Their transferable asset is not exclusivity, it is the tiering. Soho Friends is a published annual tier that buys discounts and event invitations but no club access. What they do not have is medicine either.</p>
+    </div>
+  </div>
+  <div class="card accent mt2">
+    <div class="eyebrow">The difference</div>
+    <h3>L&amp;K is not a practice built around a doctor. It is the facility a doctor needs.</h3>
+    <p class="muted mt">The rooms, the diagnostics, the infusion suite, the operating suite, the staff and the accreditation, already standing. Physicians practice here. Investors own the building they practice in, which is why the surgical lines bill a facility fee while the surgeon bills their own patients directly. That is the leg up: not a head start on a format anyone can copy, but an asset a competitor has to become in order to compete.</p>
+  </div>
+</section>
+
+<!-- 4 · TWO-LAYER MODEL -->
+<section id="model">
+  <div class="eyebrow">The model</div>
+  <h2>One building. Two layers. Different doors.</h2>
+  <p class="lead mt">The clinic underneath is a licensed, cash-pay medical practice open to any member of the public at list price. The club on top is a capped, members-only social layer. <span class="dp">Day passes let anyone taste the club without joining, and membership</span><span class="ndp">Membership</span> never becomes a condition of receiving care.</p>
+
+  <div class="layers">
+    <div class="layer layer-club">
+      <div class="tag">Members only &middot; capped</div>
+      <h3>The Club</h3>
+      <div class="who muted">Residents and Longevity members.<span class="dp"> Day pass holders by the visit.</span></div>
+      <div class="chips">
+        <span class="chip r">Contrast suite</span>
+        <span class="chip r">Sauna &amp; cold plunge ritual</span>
+        <span class="chip r">The Lounge</span>
+        <span class="chip r">Member events</span>
+        <span class="chip r">Guest passes</span>
+        <span class="chip r">Priority booking</span>
+        <span class="chip r">Private buyouts</span>
+      </div>
+    </div>
+    <div class="layer-join">Membership sits on top. It never sits in front.</div>
+    <div class="layer layer-clinic">
+      <div class="tag">Open to everyone &middot; no membership required</div>
+      <h3>The Clinic</h3>
+      <div class="who muted">Anyone. Book online, pay list price, walk out.</div>
+      <div class="chips" id="clinicChips"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · OFFERING -->
+<section id="offering">
+  <div class="eyebrow">The offering</div>
+  <h2 id="offeringTitle"></h2>
+  <p class="lead mt">The information architecture borrows from how a health club organizes itself rather than how a clinic does. Patients do not shop by billing code; they arrive wanting to feel a specific way.</p>
+  <div class="grid g3 mt2" id="verbGrid"></div>
+</section>
+
+<!-- 5b · SURGERY (surgical scenario only) -->
+<section id="surgery" hidden>
+  <div class="eyebrow">The surgery suite</div>
+  <h2>One accredited operating room, inside the clinic.</h2>
+  <p class="lead mt">A 900 square foot office-based surgery suite planned to the published iOR Partners specification: operating room, pre-op and PACU, sterile processing, sterile supply and soiled utility. Accredited by Quad A. It sits in the clinic layer, which means anyone can book it. Surgery is never a membership benefit.</p>
+
+  <div class="card accent mt2">
+    <div class="eyebrow">What this suite collects</div>
+    <h3>Facility fee only. The surgeon bills their own professional fee.</h3>
+    <p class="muted mt">Every surgical figure in this brief is the <b class="rose">facility fee</b> &mdash; what L&amp;K collects for the room, clinical staff, supplies, sedation monitoring and recovery. The operating surgeon is a principal who bills the patient directly for their professional work, and that fee never appears on these books. The all-in price a patient pays is materially higher than the numbers shown here.</p>
+    <p class="muted mt">This is why the operating-room margins run higher than the treatment-room lines: with no surgeon's share to pay, facility cost of goods is disposables, implants, drugs and linens only. Clinical staff already sits in fixed overhead. Across <b data-lk="capacity.operatingRoom.demand|text"></b> operating-room hours a month, the schedule works out to roughly <b class="rose" id="orHourRate"></b> per operating-room hour.</p>
+  </div>
+
+  <div class="card accent mt2">
+    <div class="eyebrow">The ceiling, stated up front</div>
+    <h3>Moderate sedation. Under two hours of recovery. Nothing above that line.</h3>
+    <p class="muted mt">Every procedure runs under IV moderate sedation administered by the operating physician with a monitoring RN. That ceiling is a design decision, not a limitation we backed into. It is why there is no anesthesiologist on payroll, no anesthesia machine in the budget, and only three PACU bays &mdash; and it removes the highest-acuity risk from the building entirely.</p>
+    <p class="muted mt">Under <a href="https://www.mbc.ca.gov/Licensing/Outpatient-Surgery/" target="_blank" rel="noopener noreferrer" class="srclink">California law</a>, accreditation is mandatory only when anesthesia is dosed such that protective reflexes may be lost. Moderate sedation preserves them, so this suite most likely sits below the statutory trigger. <b class="rose">We accredit anyway.</b></p>
+  </div>
+
+  <div class="grid g2 mt2">
+    <div class="card">
+      <div class="eyebrow">In the operating room</div>
+      <ul class="proclist" id="menuOr"></ul>
+    </div>
+    <div class="card">
+      <div class="eyebrow">In the treatment rooms, under local</div>
+      <ul class="proclist" id="menuTreatment"></ul>
+      <p class="faint xs mt">Routing these to rooms the clinic already has is what holds the surgical suite to 900 square feet with no dedicated procedure room.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- 6 · MEMBERSHIP -->
+<section id="membership">
+  <div class="eyebrow">Membership architecture</div>
+  <h2>A ladder, not a gate.</h2>
+  <p class="lead mt"><span id="tierCount">Four tiers</span>, each a genuine step up rather than a repackaging of the last. The cheap annual tier is the funnel; the capped monthly tiers are the business. Mechanics follow the proven playbook: a three-month minimum then month-to-month, credits that roll over while active and expire on cancellation, freezes on seven days' notice, tier changes after the initial commitment.</p>
+  <div class="tiergrid" id="tierGrid"></div>
+
+  <div class="card accent mt2">
+    <div class="eyebrow">Before doors open</div>
+    <h3>Founding Members</h3>
+    <p class="muted mt"><b class="rose" data-lk="founding.count|int"></b> memberships sold pre-opening at <b data-lk="founding.prepay|money"></b> for the first year, a <b data-lk="founding.discount|pct0"></b> discount against list. That is <b class="rose" data-lk="founding.proceeds|money"></b> of contracted revenue collected during construction, and it is the single strongest de-risking item in this brief. It converts the opening ramp from a projection into a partially pre-sold book.</p>
+  </div>
+</section>
+
+<!-- 7 · FUNNEL -->
+<section id="funnel">
+  <div class="eyebrow">How the ladder fills</div>
+  <h2>The open clinic is the top of the funnel.</h2>
+  <p class="lead mt">Because anyone can book a procedure without joining, every non-member treatment is a paid introduction. The conversion path runs in one direction and each step is cheap to take.</p>
+  <div class="grid g4 mt2">
+    <div class="card"><div class="pill">Step one</div><h3 class="mt">Walks in</h3><p class="muted mt small">Books a procedure<span class="dp"> or buys a day pass</span>. Pays list price. Owes nothing further.</p></div>
+    <div class="card"><div class="pill">Step two</div><h3 class="mt">Becomes a Friend</h3><p class="muted mt small">$300 a year pays for itself on roughly two procedures. Low friction, high volume, and it captures the database.</p></div>
+    <div class="card"><div class="pill">Step three</div><h3 class="mt">Becomes a Resident</h3><p class="muted mt small">Wants the circuit and the room, not just the treatment. This is where recurring revenue begins.</p></div>
+    <div class="card accent"><div class="pill on">Step four</div><h3 class="mt">Becomes Longevity</h3><p class="muted mt small">Physician-delivered programming. Hard capped. The highest retention and the highest lifetime value in the building.</p></div>
+  </div>
+</section>
+
+<!-- 8 · SPACE -->
+<section id="space">
+  <div class="eyebrow">The facility</div>
+  <h2><span data-lk="sqft|sqft"></span> in Playa Vista.</h2>
+  <p class="lead mt" data-lk="tagline|text"></p>
+  <div class="grid g2 mt2">
+    <div class="tablewrap">
+      <table>
+        <caption>Wet areas drive cost. Plunges, saunas and steam carry a materially higher per-square-foot buildout than a dry medspa, which is why the lean case trims the contrast suite before it trims treatment rooms. Treatment rooms are the revenue engine.</caption>
+        <thead><tr><th>Space</th><th class="n">SF</th></tr></thead>
+        <tbody id="spaceBody"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="eyebrow">Stations</div>
+      <div id="stationList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · CAPACITY -->
+<section id="capacity">
+  <div class="eyebrow">Capacity</div>
+  <h2>The building can actually serve the memberships being sold.</h2>
+  <p class="lead mt">A tier table implying hundreds of members is worthless unless the stations exist to serve them. Capacity here is built bottom-up from station hours, not assumed. The circuit bottleneck is the cold plunge, not the sauna; the clinical bottleneck is treatment rooms.</p>
+  <div class="grid g2 mt2" id="capacityGrid"></div>
+</section>
+
+<!-- 10 · MARKET -->
+<section id="market">
+  <div class="eyebrow">The category</div>
+  <h2>A large, fast, cash-pay category.</h2>
+  <p class="lead mt">Every figure below carries its source. Anything we could not source, we cut rather than estimate.</p>
+  <div class="grid g3 mt2" id="marketGrid"></div>
+</section>
+
+<!-- 11 · CATCHMENT -->
+<section id="catchment">
+  <div class="eyebrow">Market</div>
+  <h2 id="locHeading"></h2>
+  <p class="lead mt" id="locLead"></p>
+  <p class="muted mt2" id="locIntro"></p>
+  <div class="grid g3 mt" id="catchmentGrid"></div>
+  <div class="card accent mt2">
+    <div class="eyebrow">The opening</div>
+    <p class="mt" id="locClose"></p>
+  </div>
+  <div class="mt2">
+    <div class="eyebrow">Inside a realistic drive time</div>
+    <div class="chips" id="geoChips"></div>
+    <p class="faint xs mt" id="locSource"></p>
+  </div>
+</section>
+
+<!-- 12 · UNIT ECONOMICS -->
+<section id="economics">
+  <div class="eyebrow">Unit economics</div>
+  <h2 id="econTitle"></h2>
+  <p class="lead mt" id="econLead"></p>
+  <div class="tablewrap mt2">
+    <table>
+      <caption>Sessions per month at stabilization for the selected scenario. Volumes are re-derived per scenario from the capacity model rather than inherited, because footprint and station count differ between cases.</caption>
+      <thead id="svcHead"></thead>
+      <tbody id="svcBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 13 · REVENUE MODEL -->
+<section id="revenue">
+  <div class="eyebrow">Revenue model</div>
+  <h2>Membership revenue is not additive. Here is the honest build.</h2>
+  <p class="lead mt">The easy mistake is to stack membership fees on top of full à la carte revenue. Members draw down a credit bank against services that would otherwise have been paid at list price, so the model nets redemption out before adding a single membership dollar.</p>
+  <div class="waterfall" id="waterfall"></div>
+  <div class="card mt2">
+    <div class="eyebrow">The ratio a reviewer will test</div>
+    <p class="muted">Residents and Longevity members pay <b data-lk="recurringFeesDisplay|money"></b> a month in recurring fees and redeem <b data-lk="redeemed|money"></b> of service at retail value. That is a redemption ratio of <b class="rose" data-lk="redemptionRatio|pct1"></b>. If that number ever exceeded 100%, the credit bank would be underpriced and the membership would lose money on every visit. The model asserts it cannot.</p>
+  </div>
+</section>
+
+<!-- 14 · RAMP -->
+<section id="ramp">
+  <div class="eyebrow">Ramp</div>
+  <h2>Thirty-six months, breakeven at month <span class="rose" data-lk="breakeven|int"></span>.</h2>
+  <p class="lead mt" id="rampLead">Months one through six are construction and founding-member presales. Debt service is interest-only through construction and the ramp, then amortizes. Monthly operating income, before debt service:</p>
+  <div class="rampwrap mt2">
+    <div class="ramp" id="rampChart"></div>
+    <div class="ramp-legend">
+      <span><i style="background:linear-gradient(180deg,#C08D7C,rgba(192,141,124,0.45))"></i>Positive operating income</span>
+      <span><i style="background:rgba(46,66,55,0.95)"></i>Operating loss</span>
+      <span class="faint" id="troughNote"></span>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · P&L -->
+<section id="pl">
+  <div class="eyebrow">Stabilized P&amp;L</div>
+  <h2>Monthly, at stabilization.<span class="proj-tag">Projected</span></h2>
+  <div class="tablewrap mt2">
+    <table>
+      <thead><tr><th>Line</th><th class="n">Monthly</th><th class="n">% of revenue</th></tr></thead>
+      <tbody id="plBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 16 · SCENARIOS -->
+<section id="scenarios">
+  <div class="eyebrow">Sensitivity</div>
+  <h2>If we are wrong, how wrong can we afford to be?</h2>
+  <p class="lead mt">Volume flexed against the stated base case. Fixed overhead is held constant, which is the conservative treatment: in a genuine downside you would cut staff before you cut the lease.</p>
+  <div class="band" id="bandGrid"></div>
+</section>
+
+<!-- 17 · ASK -->
+<section id="ask">
+  <div class="eyebrow">The ask</div>
+  <h2 id="askTitle"></h2>
+  <p class="lead mt" id="askIntro"></p>
+  <div class="askblock">
+    <div class="eyebrow">Total project cost &middot; <span data-lk="label|text"></span></div>
+    <div class="ask-amt" data-lk="projectCost|moneyM"></div>
+    <p class="muted mt" data-lk="tagline|text"></p>
+    <div class="ask-grid" id="askGrid"></div>
+  </div>
+
+  <h3 class="mt3">Use of funds</h3>
+  <div class="tablewrap mt">
+    <table>
+      <thead><tr><th>Application</th><th class="n">Amount</th><th class="n">% of project</th></tr></thead>
+      <tbody id="uofBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 18 · SBA -->
+<section id="sba">
+  <div class="eyebrow" id="sbaEyebrow">SBA package</div>
+  <h2 id="sbaTitle">Structured to the actual rule, not to a rounder number.</h2>
+  <div class="grid g2 mt2">
+    <div class="card">
+      <h3 id="sbaStructTitle">Loan structure</h3>
+      <div class="mt" id="sbaStruct"></div>
+    </div>
+    <div class="card">
+      <h3 id="dscrCardTitle">Debt service coverage</h3>
+      <div class="tablewrap plain mt">
+        <table>
+          <thead id="dscrHead"><tr><th>Year</th><th class="n">Operating</th><th class="n">Debt service</th><th class="n">DSCR</th></tr></thead>
+          <tbody id="dscrBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt2">
+    <div class="eyebrow">Disclosures we are making up front</div>
+    <div class="disc" id="disclosures"></div>
+  </div>
+
+  <p class="faint mt2 xs" id="sbaFootnote" style="line-height:1.7">SBA 7(a) caps at a $5,000,000 loan, with SBA's maximum guarantee exposure at $3,750,000. SOP 50 10 8 requires a minimum 10% equity injection for a startup; lenders routinely require more of a business with no operating history, which is why both figures appear above. An unconditional personal guaranty is required from any owner holding 20% or more. Rate assumption: WSJ Prime 6.75% plus the 2.75% maximum spread permitted on loans over $350,000. The 1.25x coverage threshold is prevailing lender underwriting convention, not an SBA regulation.</p>
+</section>
+
+<!-- 19 · TIMELINE -->
+<section id="timeline">
+  <div class="eyebrow">Timeline</div>
+  <h2>From signature to stabilization.</h2>
+  <div class="timeline">
+    <div class="tl"><div class="w">Month 0&ndash;3</div><h4>Close and design</h4><p id="tlClose">Loan closes, lease executed, architect and contractor engaged, permits filed. Founding member campaign opens.</p></div>
+    <div class="tl"><div class="w">Month 3&ndash;6</div><h4>Build</h4><p>Buildout, wet-area rough-in, equipment ordered. Medical director and injector recruited and credentialed.</p></div>
+    <div class="tl"><div class="w">Month 7</div><h4>Open</h4><p>Doors open to founding members first, public booking the same week. Clinic and club launch together.</p></div>
+    <div class="tl"><div class="w">Month 8&ndash;14</div><h4>Fill</h4><p>Membership ramp, events programming, referral engine from the open clinic. Operating breakeven lands in this window.</p></div>
+    <div class="tl"><div class="w">Month 15&ndash;36</div><h4>Stabilize</h4><p id="tlStable">Amortization begins at month 19. Caps approached on Resident and Longevity. Waitlist opens.</p></div>
+  </div>
+</section>
+
+<!-- 20 · TEAM -->
+<section id="team">
+  <div class="eyebrow">Team</div>
+  <h2>The operating team is in place.</h2>
+  <p class="lead mt">Clinical, aesthetic, longevity and hospitality leadership are all seated. No key role is open at opening.</p>
+  <div class="tablewrap mt2">
+    <table>
+      <thead><tr><th>Seat</th><th>Responsibility</th><th>Status</th></tr></thead>
+      <tbody id="teamBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 21 · RISKS -->
+<section id="risks">
+  <div class="eyebrow">Risks</div>
+  <h2>What could go wrong, and what we did about it.</h2>
+  <div class="risk" id="riskGrid"></div>
+</section>
+
+<!-- 22 · CTA -->
+<section id="contact">
+  <div class="cta">
+    <div class="eyebrow">Playa Vista, California</div>
+    <h2>Self-care is already social.<br>Very few rooms are built to hold it, and fewer still are licensed to treat you in one.</h2>
+    <p class="lead mt">Full model, capacity workbook and buildout detail available under NDA.</p>
+    <a class="btn" href="mailto:Laura@culvercitysurgical.com?subject=L%26K%20Wellness%20%E2%80%94%20Investor%20Brief">Contact the founder</a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>L&amp;K Wellness &middot; Playa Vista, CA &middot; Est. 2026</span>
+  <a href="methodology.html" class="methodlink">How these numbers were built<span class="arw">&rarr;</span></a>
+  <span id="footConf">Confidential &middot; For qualified investors and lenders</span>
+</footer>
+<div class="disclaimer">
+  <span id="footDisc">Forward-looking figures in this document are projections based on the stated assumptions and are not guarantees of future performance. Actual results will differ. This document is not an offer to sell or a solicitation of an offer to buy any security. Final capital structure is subject to lender credit approval and counsel.</span> Market and demographic figures carry their sources inline; figures we could not source were excluded rather than estimated.
+</div>
+
+<script src="data.js"></script>
+<script>
+(function(){
+  'use strict';
+  var D = window.LK;
+  // A build either pins one scenario or offers a short list to toggle between.
+  // The toggle is only ever used for alternative capital structures on the
+  // SAME business, never to switch between different businesses.
+  var SELECTABLE = (D.selectable && D.selectable.length) ? D.selectable : [D.scenario];
+  var scen = D.scenario;
+
+  // ---- formatters ----
+  function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+  function moneyK(n){ return '$' + Math.round(n/1000).toLocaleString('en-US') + 'K'; }
+  // One decimal so "$5.0M" and "$3.5M" read as a matched pair, but a second
+  // when the number needs it: $5,550,000 must not render as "$5.5M".
+  function moneyM(n){
+    var m = n / 1e6;
+    var d = Math.abs(m * 10 - Math.round(m * 10)) < 1e-9 ? 1 : 2;
+    return '$' + m.toFixed(d) + 'M';
+  }
+  function pct0(n){ return Math.round(n*100) + '%'; }
+  function pct1(n){ return (n*100).toFixed(1) + '%'; }
+  function xfmt(n){ return n.toFixed(2) + 'x'; }
+  function intfmt(n){ return Math.round(n).toLocaleString('en-US'); }
+  function sqftfmt(n){ return n.toLocaleString('en-US') + ' SF'; }
+  function textfmt(v){ return String(v); }
+  function signed(n){ return (n < 0 ? '−' : '') + money(Math.abs(n)); }
+  var FMT = { money:money, moneyK:moneyK, moneyM:moneyM, pct0:pct0, pct1:pct1,
+              x:xfmt, int:intfmt, sqft:sqftfmt, text:textfmt };
+
+  // ---- DOM helpers. textContent only, never innerHTML. ----
+  function el(tag, cls, txt){
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (txt != null) e.textContent = txt;
+    return e;
+  }
+  function clear(node){ while (node.firstChild) node.removeChild(node.firstChild); }
+  function kv(label, value){
+    var r = el('div','kv');
+    r.appendChild(el('span', null, label));
+    r.appendChild(el('b','num', value));
+    return r;
+  }
+  function cell(row, cls, txt){ row.appendChild(el('td', cls, txt)); return row; }
+  function get(obj, path){
+    return path.split('.').reduce(function(o,k){ return (o == null) ? undefined : o[k]; }, obj);
+  }
+  // Resident + Longevity only. Friends do not draw on a credit bank.
+  function recurringFees(s){
+    return s.membershipLines.reduce(function(sum,l){
+      return sum + ((l.id === 'resident' || l.id === 'longevity') ? l.monthly : 0);
+    }, 0);
+  }
+
+  // ---- static renders (scenario-independent) ----
+  function renderStatic(){
+    var VERBS = [
+      ['Restore','Regenerative','Six PRP protocols, therapeutic medications, a ten-drip infusion menu and NAD+ by dose.'],
+      ['Renew','Aesthetics','Neuromodulators and filler, RF microneedling, laser resurfacing.'],
+      ['Recover','Recovery','Hyperbaric oxygen, Ammortal chambers, robotic massage, compression, red light.'],
+      ['Reset','Diagnostics','Advanced biometrics, DEXA, DUTCH, DNA analysis. The baseline everything else is measured against.'],
+      ['Reconnect','The Club','The contrast suite, the Lounge, member events and guest privileges. The reason people come back when nothing hurts.']
+    ];
+    var vg = document.getElementById('verbGrid');
+    VERBS.forEach(function(v){
+      var c = el('div','card');
+      c.appendChild(el('div','eyebrow', v[0]));
+      c.appendChild(el('h3', null, v[1]));
+      c.appendChild(el('p','muted mt', v[2]));
+      vg.appendChild(c);
+    });
+
+    function fillCards(containerId, rows){
+      var g = document.getElementById(containerId);
+      rows.forEach(function(m){
+        var c = el('div','mkt');
+        c.appendChild(el('div','v', m.value));
+        c.appendChild(el('div','l', m.label));
+        c.appendChild(el('div','nt', m.note));
+        var src = el('div','src','Source: ');
+        var a = el('a', null, m.source);
+        a.href = m.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+        src.appendChild(a);
+        c.appendChild(src);
+        g.appendChild(c);
+      });
+    }
+    fillCards('marketGrid', D.market);
+    fillCards('catchmentGrid', D.catchment);
+
+    ['Heading', 'Intro', 'Source'].forEach(function(slot){
+      document.getElementById('loc' + slot).textContent = D.location[slot.toLowerCase()];
+    });
+    // Segment arrays, built as nodes rather than markup.
+    ['Lead', 'Close'].forEach(function(slot){
+      var host = document.getElementById('loc' + slot);
+      clear(host);
+      D.location[slot.toLowerCase()].forEach(function(seg){
+        if (seg.em || seg.rose) {
+          host.appendChild(el('b', seg.rose ? 'rose' : null, seg.t));
+        } else {
+          host.appendChild(document.createTextNode(seg.t));
+        }
+      });
+    });
+
+    var gc = document.getElementById('geoChips');
+    D.geography.forEach(function(g){ gc.appendChild(el('span','chip', g)); });
+  }
+
+  // ---- scenario-dependent renders ----
+
+  // Only services this scenario actually delivers. Without the filter, lean
+  // and ample would advertise surgery they do not have a room for.
+  function renderClinicChips(s){
+    var clinic = document.getElementById('clinicChips');
+    clear(clinic);
+    // Read the scenario's own resolved lines, not a global service table. Menus
+    // now differ per scenario, and `sessions` is already a number here rather
+    // than a map that has to be keyed correctly.
+    s.lines.filter(function(l){ return l.sessions > 0; })
+      .forEach(function(l){
+        clinic.appendChild(el('span', 'chip' + (l.cat === 'Surgery' ? ' r' : ''), l.name));
+      });
+  }
+
+  function renderSurgery(s){
+    var sec = document.getElementById('surgery');
+    var hasOr = !!(s.stations && s.stations.or);
+    sec.hidden = !hasOr;
+    var navLink = document.querySelector('#secnav a[href="#surgery"]');
+    if (navLink) navLink.hidden = !hasOr;
+    if (!hasOr) return;
+
+    var menu = D.surgicalMenu;
+    var or = document.getElementById('menuOr');
+    var tr = document.getElementById('menuTreatment');
+    clear(or); clear(tr);
+    menu.or.forEach(function(t){ or.appendChild(el('li', null, t)); });
+    menu.treatment.forEach(function(t){ tr.appendChild(el('li', null, t)); });
+
+    // Derived, not typed: the per-OR-hour rate is the sanity check a reviewer
+    // runs against a posted facility fee schedule.
+    var feeGross = s.lines.filter(function(l){ return l.facilityFee; })
+                          .reduce(function(a, l){ return a + l.gross; }, 0);
+    var hours = s.capacity.operatingRoom ? s.capacity.operatingRoom.demand : 0;
+    document.getElementById('orHourRate').textContent =
+      hours ? money(Math.round(feeGross / hours)) : 'n/a';
+  }
+
+  function renderTiers(s){
+    var g = document.getElementById('tierGrid');
+    clear(g);
+    // Tier counts are keyed by BASE scenario, so the private-equity variants
+    // (ample15, surgical20) must read through dataKey. Reading s.key directly
+    // returns undefined on those sites, which silently emptied this grid.
+    var ck = s.dataKey || s.key;
+    // A tier with no count is not on offer in this scenario, ample withdrew
+    // the Day Pass in Aug 2026. Rendering it at zero reads as an error.
+    var live = D.tiers.filter(function(t){ return t.counts[ck] > 0; });
+    g.style.setProperty('--tier-cols', live.length);
+    document.getElementById('tierCount').textContent =
+      ['', 'One tier', 'Two tiers', 'Three tiers', 'Four tiers', 'Five tiers'][live.length] || (live.length + ' tiers');
+    live.forEach(function(t){
+      var c = el('div', 'tier' + (t.id === 'longevity' ? ' hero-tier' : ''));
+      c.appendChild(el('div','tname', t.name));
+      c.appendChild(el('div','tprice', '$' + t.price.toLocaleString('en-US')));
+      c.appendChild(el('div','tcad', t.cadence));
+      c.appendChild(el('div','tblurb', t.blurb));
+      var ul = el('ul');
+      t.includes.forEach(function(i){ ul.appendChild(el('li', null, i)); });
+      c.appendChild(ul);
+      var foot = el('div','tcount');
+      foot.appendChild(el('b', null, intfmt(t.counts[ck])));
+      var label = t.isMembership ? ' members at stabilization' : ' visits per month';
+      foot.appendChild(document.createTextNode(label + (t.capped ? ' · capped' : '')));
+      c.appendChild(foot);
+      g.appendChild(c);
+    });
+  }
+
+  function renderSpace(s){
+    var tb = document.getElementById('spaceBody');
+    clear(tb);
+    s.space.forEach(function(r){
+      var tr = el('tr'); cell(tr, null, r[0]); cell(tr,'n', intfmt(r[1])); tb.appendChild(tr);
+    });
+    var tot = el('tr','total'); cell(tot, null, 'Total'); cell(tot,'n', intfmt(s.sqft)); tb.appendChild(tot);
+
+    var LABELS = {
+      treatment:'Treatment rooms', ivchair:'IV and regenerative chairs', sauna:'Saunas',
+      plunge:'Cold plunges', aescape:'Aescape robotic massage', ammortal:'Ammortal chambers',
+      hbot:'Hyperbaric chambers', diagnostic:'Diagnostic and consult rooms', recovery:'Recovery stations',
+      redlight:'Redlight rooms', dexa:'DEXA scan room',
+      or:'OR'
+    };
+    var sl = document.getElementById('stationList');
+    clear(sl);
+    Object.keys(s.stations).forEach(function(k){
+      sl.appendChild(kv(LABELS[k] || k, String(s.stations[k])));
+    });
+    sl.appendChild(el('div','faint xs mt', 'Equipment strategy: ' + s.equipmentStrategy));
+  }
+
+  function renderCapacity(s){
+    var g = document.getElementById('capacityGrid');
+    clear(g);
+    var panels = [
+      ['Recovery circuit', s.capacity.circuit, 'visits per month',
+       'Cold plunge throughput is the binding constraint. Sauna seats and lounge capacity both exceed it.'],
+      ['Treatment rooms', s.capacity.treatmentRooms, 'procedures per month',
+       'Clinical hours only, at a practical utilization ceiling. Peak-hour concentration means nothing runs at theoretical capacity.']
+    ];
+    if (s.capacity.operatingRoom) {
+      panels.push(['Operating room', s.capacity.operatingRoom, 'hours per month',
+        'Measured in hours rather than cases, because surgical case length varies far more than a wellness session does. ' +
+        s.capacity.operatingRoom.cases + ' cases a month across nine block days.']);
+    }
+    panels.forEach(function(p){
+      var name = p[0], c = p[1], unit = p[2], note = p[3];
+      var card = el('div','card');
+      card.appendChild(el('div','eyebrow', name));
+      var head = el('div');
+      var big = el('span', null, pct0(c.utilization));
+      big.style.cssText = 'font-family:var(--display);font-size:2rem;color:var(--rose);letter-spacing:-1px';
+      head.appendChild(big);
+      var sub = el('span','faint', ' utilized at stabilization');
+      sub.style.cssText = 'margin-left:10px;font-size:.84rem';
+      head.appendChild(sub);
+      card.appendChild(head);
+      card.appendChild(kv('Theoretical capacity', intfmt(c.theoretical) + ' ' + unit));
+      card.appendChild(kv('Practical capacity', intfmt(c.practical) + ' ' + unit));
+      card.appendChild(kv('Modeled demand', intfmt(c.demand) + ' ' + unit));
+      card.appendChild(kv('Headroom', intfmt(c.headroom) + ' ' + unit));
+      card.appendChild(el('p','faint xs mt', note));
+      g.appendChild(card);
+    });
+  }
+
+  function renderServices(s){
+    var tb = document.getElementById('svcBody');
+    clear(tb);
+    var band = s.menu === 'legacy';
+    var head = band
+      ? ['Service', 'Price band', 'Mid', 'Margin', 'Sessions/mo', 'Gross/mo']
+      : ['Service', 'Price', 'Margin', 'Sessions/mo', 'Monthly gross', 'After margin'];
+    var hr = el('tr');
+    head.forEach(function(h, i){ hr.appendChild(el(i === 0 ? 'th' : 'th', i === 0 ? null : 'n', h)); });
+    var th = document.getElementById('svcHead');
+    clear(th); th.appendChild(hr);
+    document.getElementById('econLead').textContent = band
+      ? 'No insurance contracts, no payer mix, no accounts receivable aging. Prices shown are the midpoint of a stated band; margin is contribution after the direct cost of delivery.'
+      : 'No insurance contracts, no payer mix, no accounts receivable aging. Prices are exact, not banded; margin is contribution after the direct cost of delivery.';
+    var cats = {};
+    // Zero-volume lines are not part of this scenario. Without this filter the
+    // wellness-only briefs render surgical rows at $0, which reads as a
+    // service the clinic offers and has no room for.
+    s.lines.filter(function(l){ return l.sessions > 0; })
+      .forEach(function(l){ (cats[l.cat] = cats[l.cat] || []).push(l); });
+    Object.keys(cats).forEach(function(cat){
+      var sub = el('tr','sub');
+      var td = el('td', null, cat);
+      td.colSpan = 6;
+      sub.appendChild(td);
+      tb.appendChild(sub);
+      cats[cat].forEach(function(l){
+        var tr = el('tr');
+        cell(tr, null, l.name);
+        // The legacy menu prices from a stated band and shows its midpoint. The
+        // current menu states an exact price, so the band column would print the
+        // same number twice; it carries contribution after margin instead.
+        if (band) { cell(tr, 'muted', '$' + intfmt(l.lo) + '–$' + intfmt(l.hi)); }
+        cell(tr, 'n', money(l.price));
+        cell(tr, 'n', pct0(l.margin));
+        cell(tr, 'n', intfmt(l.sessions));
+        cell(tr, 'n', money(l.gross));
+        if (!band) { cell(tr, 'n', money(l.net)); }
+        tb.appendChild(tr);
+      });
+    });
+    // The total row has to follow whichever column set is in play. The legacy
+    // layout leaves the band and mid cells blank; the current layout has no band
+    // or mid, and carries contribution after margin in the last cell.
+    var tot = el('tr','total');
+    var sessionTotal = s.lines.reduce(function(a,l){ return a + l.sessions; }, 0);
+    cell(tot, null, 'Service delivery at list value');
+    if (band) {
+      cell(tot, null, '');
+      cell(tot, 'n', '');
+      cell(tot, 'n', pct0(s.serviceMargin));
+      cell(tot, 'n', intfmt(sessionTotal));
+      cell(tot, 'n', money(s.rackValue));
+    } else {
+      cell(tot, 'n', '');
+      cell(tot, 'n', pct0(s.serviceMargin));
+      cell(tot, 'n', intfmt(sessionTotal));
+      cell(tot, 'n', money(s.rackValue));
+      cell(tot, 'n', money(s.rackValue - s.serviceCogs));
+    }
+    tb.appendChild(tot);
+  }
+
+  function renderWaterfall(s){
+    var w = document.getElementById('waterfall');
+    clear(w);
+    // Line count is per scenario: ample dropped three aesthetics lines and split
+    // IV into three dose tiers, so "17" stopped being true for everyone.
+    var liveLines = s.lines.filter(function(l){ return l.sessions > 0; }).length;
+    [['', 'Service delivery at list value', 'All ' + liveLines + ' lines, every session, priced at what a walk-in pays.', s.rackValue],
+     ['minus','less member credit redemption','Residents and Longevity members drawing on credits rather than paying cash.', -s.redeemed],
+     ['minus','less member and Friends discount','Blended discount on à la carte purchases beyond the credit bank.', -s.memberDiscount],
+     ['sum','À la carte revenue','What non-members and cash-paying members actually pay.', s.alaCarteNet],
+     ['plus','plus membership fees','Friends, Resident and Longevity recurring revenue.', s.membershipRevenue],
+     ['plus','plus day pass and access','Single-visit circuit access, no membership required.', s.accessRevenue],
+     ['sum','Total revenue','Per month at stabilization.', s.totalRevenue]
+    ].filter(function(r){ return !(r[1].indexOf('day pass') > -1 && !s.accessRevenue); })
+     .forEach(function(r){
+      var row = el('div','wf-row ' + r[0]);
+      var k = el('div','k', r[1]);
+      k.appendChild(el('small', null, r[2]));
+      row.appendChild(k);
+      row.appendChild(el('div','v', signed(r[3])));
+      w.appendChild(row);
+    });
+  }
+
+  function renderRamp(s){
+    var c = document.getElementById('rampChart');
+    clear(c);
+    var vals = s.ramp.map(function(m){ return m.operating; });
+    var hi = Math.max.apply(null, vals.concat([0]));
+    var lo = Math.min.apply(null, vals.concat([0]));
+    var span = hi - lo || 1;
+    var posShare = (hi / span) * 100;   // % of chart height above the zero line
+    s.ramp.forEach(function(m){
+      var bar = el('div','rbar');
+      var pos = el('div','pos'); pos.style.height = posShare + '%';
+      var neg = el('div','neg'); neg.style.height = (100 - posShare) + '%';
+      if (m.operating >= 0) {
+        var up = el('div','fill-up');
+        up.style.height = (hi ? (m.operating / hi) * 100 : 0) + '%';
+        up.title = 'Month ' + m.month + ': ' + signed(m.operating);
+        pos.appendChild(up);
+      } else {
+        var dn = el('div','fill-dn');
+        dn.style.height = (lo ? (m.operating / lo) * 100 : 0) + '%';
+        dn.title = 'Month ' + m.month + ': ' + signed(m.operating);
+        neg.appendChild(dn);
+      }
+      bar.appendChild(pos); bar.appendChild(neg);
+      if (m.month % 6 === 0) bar.appendChild(el('div','m', String(m.month)));
+      c.appendChild(bar);
+    });
+    document.getElementById('troughNote').textContent =
+      'Cash trough ' + signed(s.trough.amount) + ' at month ' + s.trough.month +
+      ', against a ' + money(s.reserve) +
+      (s.allEquity ? ' working capital reserve.' : ' working capital and debt service reserve.');
+  }
+
+  function renderPL(s){
+    var tb = document.getElementById('plBody');
+    clear(tb);
+    var r = s.totalRevenue;
+    function add(label, val, cls){
+      var tr = el('tr', cls || '');
+      cell(tr, null, label);
+      cell(tr, 'n', signed(val));
+      cell(tr, 'n', pct0(Math.abs(val) / r));
+      tb.appendChild(tr);
+    }
+    add('Total revenue', r);
+    add('Cost of services delivered', -s.serviceCogs, 'neg');
+    add('Circuit consumables', -s.circuitCogs, 'neg');
+    add('Net after COGS', s.netAfterCogs);
+    var sub = el('tr','sub');
+    var td = el('td', null, 'Fixed overhead');
+    td.colSpan = 3;
+    sub.appendChild(td);
+    tb.appendChild(sub);
+    Object.keys(s.opex).forEach(function(k){ add(k, -s.opex[k], 'neg'); });
+    add('Total fixed overhead', -s.opexTotal, 'neg');
+    var tot = el('tr','total');
+    cell(tot, null, 'Operating income');
+    cell(tot, 'n', money(s.operatingIncome));
+    cell(tot, 'n', pct0(s.operatingMargin));
+    tb.appendChild(tot);
+  }
+
+  function renderBand(s){
+    var g = document.getElementById('bandGrid');
+    clear(g);
+    s.band.forEach(function(b){
+      var isBase = b.label === 'Base';
+      var c = el('div','bandcard' + (isBase ? ' base' : ''));
+      if (isBase) c.appendChild(el('div','pin','Base case'));
+      c.appendChild(el('div','bt', b.label));
+      c.appendChild(el('div','bh', moneyM(b.annual) + ' / yr'));
+      c.appendChild(el('div','bs', b.tag));
+      [['Revenue per month', money(b.revenue)],
+       ['Net after COGS', money(b.netAfterCogs)],
+       ['Operating income', money(b.operating)],
+       // With no lender there is no coverage question. The equivalent question
+       // for an investor is what the case earns on the money they put in.
+       s.allEquity
+         ? ['Yield on equity', pct1(b.annual / s.projectCost)]
+         : ['DSCR', xfmt(b.dscr)]
+      ].forEach(function(row){ c.appendChild(kv(row[0], row[1])); });
+      g.appendChild(c);
+    });
+  }
+
+  function renderAskGrid(s){
+    var g = document.getElementById('askGrid');
+    clear(g);
+    // On a private raise the injection is a committed number, so the 10%/20%
+    // framing is meaningless, show the raise and what share of the project
+    // it covers instead.
+    var cells = s.allEquity
+      ? [['Total raise', money(s.projectCost)],
+         ['Stabilized operating income', money(s.operatingIncome) + ' / mo'],
+         ['Unlevered yield on equity', pct1(s.unleveredYield)],
+         ['Footprint', sqftfmt(s.sqft)]]
+      : s.isPrivate
+      ? [['Private investment', money(s.injectionFloor)],
+         ['Share of project', pct0(s.injectionPct)],
+         ['SBA 7(a) loan', money(s.loanFloor)],
+         ['Footprint', sqftfmt(s.sqft)]]
+      : [['SBA 7(a) loan', money(s.loanFloor)],
+         ['Equity injection · 10% floor', money(s.injectionFloor)],
+         ['Equity at 20% planning', money(s.injectionPlanning)],
+         ['Footprint', sqftfmt(s.sqft)]];
+    cells.forEach(function(c){
+      var d = el('div');
+      d.appendChild(el('div','k', c[0]));
+      d.appendChild(el('div','v', c[1]));
+      g.appendChild(d);
+    });
+  }
+
+  function renderUOF(s){
+    var tb = document.getElementById('uofBody');
+    clear(tb);
+    s.useOfFunds.forEach(function(row){
+      var tr = el('tr');
+      cell(tr, null, row[0]);
+      cell(tr, 'n', money(row[1]));
+      cell(tr, 'n', pct0(row[1] / s.projectCost));
+      tb.appendChild(tr);
+    });
+    var tot = el('tr','total');
+    cell(tot, null, 'Total project cost');
+    cell(tot, 'n', money(s.projectCost));
+    cell(tot, 'n', '100%');
+    tb.appendChild(tot);
+  }
+
+  // The all-equity brief has no lender, so the SBA section becomes a capital
+  // and returns section. It reuses the same two cards rather than adding a
+  // parallel block of markup, because all five of the other briefs share this
+  // template and a second block would have to be hidden in every one of them.
+  function renderCapital(s){
+    document.getElementById('navSba').textContent = 'Capital';
+    document.getElementById('sbaEyebrow').textContent = 'Capital and returns';
+    document.getElementById('sbaTitle').textContent =
+      'Funded entirely with equity. Nothing sits ahead of the investor.';
+    document.getElementById('sbaStructTitle').textContent = 'Sources and uses';
+    document.getElementById('dscrCardTitle').textContent = 'Operating income by year';
+
+    var box = document.getElementById('sbaStruct');
+    clear(box);
+    [['Total project cost', money(s.projectCost)],
+     ['Equity raised', money(s.projectCost)],
+     ['Senior debt', 'None'],
+     ['Working capital reserve', money(s.reserve)],
+     ['Modeled cash trough', money(Math.abs(s.trough.amount)) + ' at month ' + s.trough.month],
+     ['Stabilized operating income', money(s.operatingIncome) + ' / mo'],
+     ['Unlevered yield on equity', pct1(s.unleveredYield)],
+     ['Equity payback', 'month ' + s.paybackMonth.month + (s.paybackMonth.extrapolated ? ', extrapolated' : '')]
+    ].forEach(function(r){ box.appendChild(kv(r[0], r[1])); });
+
+    var head = document.getElementById('dscrHead');
+    clear(head);
+    var hr = el('tr');
+    ['Year', 'Operating income', 'Cumulative cash'].forEach(function(h, i){
+      var th = el('th', i ? 'n' : null, h);
+      hr.appendChild(th);
+    });
+    head.appendChild(hr);
+
+    var tb = document.getElementById('dscrBody');
+    clear(tb);
+    s.dscrByYear.forEach(function(y){
+      var tr = el('tr');
+      cell(tr, null, 'Year ' + y.year);
+      cell(tr, 'n', signed(y.operating));
+      // Off the ramp, not a running total of operating income: founding
+      // prepayments land during construction and belong in cumulative cash.
+      cell(tr, 'n', signed(s.ramp[Math.min(y.year * 12, s.ramp.length) - 1].cumulativeCash));
+      tb.appendChild(tr);
+    });
+    var tot = el('tr','total');
+    cell(tot, null, 'Stabilized run rate');
+    cell(tot, 'n', money(s.operatingIncomeAnnual) + ' / yr');
+    cell(tot, 'n', signed(s.cumulativeCash36));
+    tb.appendChild(tot);
+
+    document.getElementById('sbaFootnote').textContent =
+      'Cumulative cash includes the ' + money(s.founding.proceeds) + ' of founding-member ' +
+      'prepayments collected during construction, which is why Year 1 ends positive on a ' +
+      'negative operating year. ' +
+      'Unlevered yield on equity is stabilized annual operating income divided by the total ' +
+      'amount raised. It is stated before tax, before any distribution policy, before ' +
+      'maintenance capital and before any assumption about a sale, and it is therefore not ' +
+      'an investor return. Equity payback is the month cumulative operating cash, including ' +
+      'founding-member prepayments, first equals the amount raised; the model runs 36 months, ' +
+      'so a later month is extrapolated at the stabilized run rate and is labelled as such. ' +
+      'No internal rate of return or exit multiple is quoted, because nothing in this model ' +
+      'supports a terminal value we could source.';
+
+    renderEquityDisclosures(s);
+  }
+
+  function renderEquityDisclosures(s){
+    var d = document.getElementById('disclosures');
+    clear(d);
+    var items = [
+      'Year 1 operating income is negative. Six of those months are construction and the rest ' +
+      'are the opening ramp. There is no debt service to carry through it, and the ' +
+      money(s.reserve) + ' working capital reserve inside use of funds is sized against a ' +
+      'modeled cash trough of ' + money(Math.abs(s.trough.amount)) + ' at month ' +
+      s.trough.month + '.',
+
+      (s.reserve > Math.abs(s.trough.amount) * 3
+        ? 'The reserve is deliberately larger than the trough it covers, by a wide margin. ' +
+          'With no lender there is no covenant to cure and no mandated reserve, so the cushion ' +
+          'is a choice: it funds a slower ramp than the one modeled without a second raise. ' +
+          'It is idle cash and we are naming it rather than leaving it to be found.'
+        : 'The reserve covers the modeled trough ' +
+          (s.reserve / Math.abs(s.trough.amount)).toFixed(1) + ' times over. It is sized ' +
+          'against that trough rather than to a round number.'),
+
+      'The whole project is funded with equity, so every dollar of operating income accrues ' +
+      'to the investor rather than being split with a lender. The other side of that is ' +
+      'the absence of leverage: the same business financed with debt would put less cash at ' +
+      'risk for the same operating income, and would also put a lender ahead of the equity.',
+
+      'Volume is flexed to 72% of base in the low case and the business still produces ' +
+      moneyM(s.band[0].annual) + ' of annual operating income. Fixed overhead is held ' +
+      'constant in that case, which is the conservative treatment.',
+
+      'All forward-looking figures are projections on the stated assumptions and are not ' +
+      'guarantees. Market and demographic figures carry their sources; anything unsourced ' +
+      'was cut rather than estimated.'
+    ];
+    items.forEach(function(t){ d.appendChild(el('p', null, t)); });
+  }
+
+  function renderSBA(s){
+    if (s.allEquity) return renderCapital(s);
+    var box = document.getElementById('sbaStruct');
+    clear(box);
+    (s.isPrivate
+      ? [['Total project cost', money(s.projectCost)],
+         ['Private investment', money(s.injectionFloor) + '  (' + pct0(s.injectionPct) + ')'],
+         ['SBA 7(a) loan', money(s.loanFloor)]]
+      : [['Total project cost', money(s.projectCost)],
+         ['SBA 7(a) loan', money(s.loanFloor)],
+         ['Equity injection (10% floor)', money(s.injectionFloor)],
+         ['Equity injection (20% planning)', money(s.injectionPlanning)]]
+    ).concat([
+     ['Assumed rate', pct1(D.assumptions.sbaRate) + ' (Prime + 2.75%)'],
+     ['Term', (D.assumptions.loanTermMonths / 12) + ' years'],
+     ['Interest-only period', D.assumptions.interestOnlyMonths + ' months'],
+     ['Payment during interest-only', money(s.interestOnlyPayment) + ' / mo'],
+     ['Payment once amortizing', money(s.monthlyDebt) + ' / mo'],
+     ['Working capital and reserve', money(s.reserve)]
+    ]).forEach(function(r){ box.appendChild(kv(r[0], r[1])); });
+
+    var tb = document.getElementById('dscrBody');
+    clear(tb);
+    s.dscrByYear.forEach(function(y){
+      var tr = el('tr');
+      cell(tr, null, 'Year ' + y.year);
+      cell(tr, 'n', signed(y.operating));
+      cell(tr, 'n', money(y.debt));
+      var d = el('td','n', y.dscr === null ? 'n/a' : xfmt(y.dscr));
+      d.style.color = (y.dscr !== null && y.dscr >= D.assumptions.dscrThreshold) ? 'var(--rose)' : 'var(--bone-dim)';
+      tr.appendChild(d);
+      tb.appendChild(tr);
+    });
+    var tot = el('tr','total');
+    cell(tot, null, 'Stabilized');
+    cell(tot, 'n', money(s.operatingIncomeAnnual));
+    cell(tot, 'n', money(s.annualDebt));
+    cell(tot, 'n', xfmt(s.dscr));
+    tb.appendChild(tot);
+
+    // Disclosures are generated from the model so they cannot drift out of
+    // sync with the numbers they describe.
+    var d = document.getElementById('disclosures');
+    clear(d);
+    var items = [];
+    items.push('Year 1 operating income is negative. Six of those months are construction and the rest are the opening ramp. Debt service is interest-only for the first ' +
+      D.assumptions.interestOnlyMonths + ' months, and the ' + money(s.reserve) +
+      ' working capital and debt service reserve inside use of funds is sized against a modeled cash trough of ' +
+      money(Math.abs(s.trough.amount)) + ' at month ' + s.trough.month + '.');
+    var y2 = s.dscrByYear[1], y3 = s.dscrByYear[2];
+    if (y2 && y2.dscr !== null && y2.dscr < D.assumptions.dscrThreshold) {
+      items.push('Year 2 coverage of ' + xfmt(y2.dscr) + ' sits below the 1.25x underwriting convention. The reserve covers the gap, and coverage clears the threshold from Year 3 forward at ' + xfmt(y3.dscr) + '.');
+    } else if (y2 && y2.dscr !== null) {
+      items.push('Year 2 coverage of ' + xfmt(y2.dscr) + ' already clears the 1.25x convention, before the business reaches stabilization.');
+    }
+    var sens = s.rateBand.map(function(r){ return xfmt(r.dscr) + ' at ' + pct1(r.rate); }).join(', ');
+    items.push('Rate sensitivity: stabilized coverage runs ' + sens + '. ' +
+      (s.rateStressPasses
+        ? 'Coverage holds above 1.25x even 200 basis points above the assumed rate.'
+        : 'At 200 basis points above assumption, coverage compresses to ' + xfmt(s.rateStress.dscr) +
+          ', on the underwriting line. That is the thinnest point in this case and we are flagging it rather than burying it.'));
+    items.push('The ' + D.assumptions.interestOnlyMonths + '-month interest-only period compresses amortization into the remaining ' +
+      (D.assumptions.loanTermMonths - D.assumptions.interestOnlyMonths) +
+      ' months, which raises the eventual payment. It buys ramp-year survivability at the cost of stabilized coverage, and both effects are reflected above.');
+    items.forEach(function(t){ d.appendChild(el('p', null, t)); });
+  }
+
+  function renderTeam(s){
+    var tb = document.getElementById('teamBody');
+    clear(tb);
+    var seats = [
+      ['Founder & Operator', 'Operations, brand, capital, compliance'],
+      ['Medical Director (MD/DO)', 'Clinical oversight, protocols, standing orders'],
+      ['Aesthetics Injector (NP or PA)', 'Neuromodulators, filler, energy devices'],
+      ['Longevity Clinical Lead', 'Therapeutic medications, GLP-1 and biomarker programs'],
+      ['Club General Manager', 'Membership, events, hospitality, retention'],
+      ['Registered Nurses (2)', 'IV therapy, regenerative, recovery floor']
+    ];
+    if (s.stations && s.stations.or) {
+      seats.splice(2, 0,
+        ['Surgeon (plastic or facial plastic, board certified) · Principal',
+         'Operative cases, patient selection, surgical QA. Bills professional fees directly; compensation sits below the operating line as an owner distribution, not facility payroll.'],
+        ['Surgical Technologist, Circulator and Monitoring RN',
+         'OR setup, sterile field, sedation monitoring, PACU recovery, instrument processing']);
+    }
+    seats.forEach(function(r){
+      var tr = el('tr');
+      cell(tr, null, r[0]);
+      cell(tr, null, r[1]);
+      var td = el('td');
+      td.appendChild(el('span','pill on','In place'));
+      tr.appendChild(td);
+      tb.appendChild(tr);
+    });
+  }
+
+  function renderRisks(s){
+    var g = document.getElementById('riskGrid');
+    clear(g);
+    var rows = [
+      ['Membership fills slower than modeled.',
+       'The clinic is open to non-members from day one, so revenue does not depend on the club filling. The low case flexes volume to 72% of base and ' + (s.allEquity ? 'still produces positive operating income' : 'still services debt') + '. Founding presales de-risk the first year specifically.'],
+      ['Members redeem more service than their fees cover.',
+       'Credit banks are sized against measured redemption, and the model asserts the redemption ratio stays below 100%. Tier pricing is reviewed against actual utilization quarterly, and the three-month minimum with 30-day change notice makes repricing operationally possible.'],
+      ['A key clinical seat turns over during the ramp.',
+       'The asset is the facility, not any one clinician. The club layer, recovery floor and infusion suite run on materially less scarce staffing than the injectable and prescribing lines, so a temporary clinical gap narrows the offering without closing the building. A licensed, equipped facility can credential a replacement; a practice built around one name cannot. Clinical compensation is structured with retention terms through the ramp period.'],
+      s.allEquity
+      ? ['The ramp runs slower than modeled and the money runs out.',
+         'This is the risk that replaces financing risk in an all-equity structure. There is no debt service to miss and no covenant to breach, so the only hard constraint is cash. The working capital reserve is sized against the modeled trough, the low case flexes volume to 72% of base and still produces positive operating income at stabilization, and founding presales land during construction rather than after opening.']
+      : ['Rates move against us before close.',
+         'Coverage is stress-tested 200 basis points above the assumed rate and disclosed at each level rather than quoted at one. See the sensitivity note in the SBA section.'],
+      ['A national brand opens nearby.',
+       'The defensible asset is the licensed facility, not the sauna. Adding injectables, infusions and physician oversight is not a product decision for a recovery studio; it means becoming a licensed medical facility, with the staffing, supervision, malpractice and accreditation that implies. That is a materially harder thing to build than another cold plunge.'],
+      ['Wet-area construction overruns.',
+       'Plunges, saunas and steam are the highest-variance line in the buildout. The lean case exists precisely as the fallback scope, and the working capital reserve is sized against the modeled cash trough with headroom rather than to a round number.']
+    ];
+    if (s.stations && s.stations.or) {
+      rows.splice(3, 0,
+        ['An adverse surgical event, or a lapse in accreditation.',
+         'The moderate-sedation ceiling and the two-hour recovery cap are the primary controls: they exclude every general-anesthesia procedure and the acuity that comes with them. Published patient-selection criteria, a written transfer agreement with a nearby acute-care facility, and a standing QA and performance-improvement program under the accrediting body sit behind that.'],
+        ['Operating room utilization comes in below plan.',
+         'The facility bills a fee for the room, not for a particular surgeon, so the suite is not one person’s key-person exposure, additional credentialed principals can be added without changing the model. Surgical facility fees are roughly a tenth of total revenue and the OR runs at 61% of practical capacity, so the wellness club and clinic carry fixed overhead independently and ' + (s.allEquity ? 'the business stands on that revenue alone' : 'coverage holds above the 1.25x convention on that business alone') + '.']);
+    }
+    g.appendChild(el('div','rh','Risk'));
+    g.appendChild(el('div','rh','Mitigation'));
+    rows.forEach(function(r){
+      g.appendChild(el('div','rt', r[0]));
+      g.appendChild(el('div','rm', r[1]));
+    });
+  }
+
+  // ---- bind simple values ----
+  function bind(s){
+    var view = Object.create(s);
+    view.recurringFeesDisplay = recurringFees(s);
+    var nodes = document.querySelectorAll('[data-lk]');
+    Array.prototype.forEach.call(nodes, function(node){
+      var spec = node.getAttribute('data-lk').split('|');
+      var val = get(view, spec[0]);
+      if (val === undefined || val === null) return;
+      node.textContent = (FMT[spec[1]] || textfmt)(val);
+    });
+  }
+
+  var WORDS = { 17: 'Seventeen', 24: 'Twenty-four' };
+
+  // Badge when there is one scenario, toggle when there are several.
+  function renderScenControl(){
+    var host = document.getElementById('scenControl');
+    if (host.dataset.built === '1') { syncSwitch(); return; }
+    clear(host);
+    if (SELECTABLE.length < 2) {
+      host.className = 'scenbadge';
+      host.appendChild(el('span','dot'));
+      host.appendChild(el('span','t'));
+      host.firstChild.nextSibling.id = 'scenBadge';
+    } else {
+      host.className = 'scenswitch';
+      host.appendChild(el('span','lbl','Private raise'));
+      var sw = el('div','switch');
+      sw.setAttribute('role','group');
+      sw.setAttribute('aria-label','Private investment amount');
+      SELECTABLE.forEach(function(k){
+        var t = D.scenarios[k];
+        var b = el('button', null, t.shortLabel || t.label);
+        b.type = 'button';
+        b.setAttribute('data-scen', k);
+        b.addEventListener('click', function(){ scen = k; render(); });
+        sw.appendChild(b);
+      });
+      host.appendChild(sw);
+    }
+    host.dataset.built = '1';
+    syncSwitch();
+  }
+
+  function syncSwitch(){
+    Array.prototype.forEach.call(document.querySelectorAll('#scenControl .switch button'), function(b){
+      b.setAttribute('aria-pressed', String(b.getAttribute('data-scen') === scen));
+    });
+  }
+
+  function renderScenarioChrome(s){
+    renderScenControl();
+    var badgeEl = document.getElementById('scenBadge');
+    if (badgeEl) badgeEl.textContent = s.label + ' case  ·  ' + moneyM(s.projectCost);
+    // The private labels already end in "private", so appending "Case" there
+    // would read "$2.0M private Case".
+    document.title = 'L&K Wellness · ' + s.label + (s.isPrivate || s.allEquity ? '' : ' Case') +
+      ' · Playa Vista · ' + (s.allEquity ? 'Private Investment Brief' : 'Investor & SBA Brief');
+
+    // Everything below is the lender framing being taken out of a brief that
+    // has no lender in it. Each of these reads as a leftover if it is missed,
+    // which is worse than the figure being wrong: it tells the reader the
+    // document was repurposed.
+    if (s.allEquity) {
+      document.getElementById('heroEyebrow').textContent = 'Confidential Private Investment Brief';
+
+      var covN = document.getElementById('heroCovN');
+      covN.removeAttribute('data-lk');
+      covN.textContent = pct1(s.unleveredYield);
+      document.getElementById('heroCovL').textContent = 'Unlevered yield on equity, stabilized';
+
+      document.getElementById('rampLead').textContent =
+        'Months one through six are construction and founding-member presales. There is no ' +
+        'debt service at any point, so monthly operating income is what the business keeps:';
+
+      document.getElementById('tlClose').textContent =
+        'Funds close, lease executed, architect and contractor engaged, permits filed. ' +
+        'Founding member campaign opens.';
+      document.getElementById('tlStable').textContent =
+        'Caps approached on Resident and Longevity. Waitlist opens.';
+
+      document.getElementById('footConf').textContent = 'Confidential · For qualified investors';
+      document.getElementById('footDisc').textContent =
+        'Forward-looking figures in this document are projections based on the stated ' +
+        'assumptions and are not guarantees of future performance. Actual results will ' +
+        'differ. This document is not an offer to sell or a solicitation of an offer to buy ' +
+        'any security.';
+    }
+
+    // Line count moves with the scenario, so the headings cannot be hardcoded.
+    var live = s.lines.filter(function(l){ return l.sessions > 0; }).length;
+    var word = WORDS[live] || String(live);
+    document.getElementById('offeringTitle').textContent =
+      'Five verbs, ' + word.toLowerCase() + ' revenue lines.';
+    document.getElementById('econTitle').textContent =
+      word + ' lines, every one cash-pay.';
+    if (s.allEquity) {
+      document.getElementById('askTitle').textContent =
+        moneyM(s.projectCost) + ' of equity. No debt in the structure.';
+      document.getElementById('askIntro').textContent =
+        s.tagline + ' The entire project is funded with equity, so there is no lender ahead ' +
+        'of the investor and no debt service against the operating income. At stabilization ' +
+        'the business produces ' + money(s.operatingIncome) + ' a month, ' +
+        pct1(s.unleveredYield) + ' a year on the amount raised, before tax and before any ' +
+        'distribution policy.';
+    } else if (s.isPrivate) {
+      document.getElementById('askTitle').textContent =
+        moneyM(s.injectionFloor) + ' private against a ' + moneyM(s.loanFloor) + ' SBA loan.';
+      var other = SELECTABLE.filter(function(k){ return k !== scen; })[0];
+      var compare = '';
+      if (other && D.scenarios[other]) {
+        var o = D.scenarios[other];
+        compare = ' At ' + moneyM(o.injectionFloor) + ' the loan is ' + moneyM(o.loanFloor) +
+                  ' and coverage is ' + xfmt(o.dscr) + '.';
+      }
+      document.getElementById('askIntro').textContent =
+        'Project cost is unchanged at ' + moneyM(s.projectCost) + '. The private raise replaces the ' +
+        'minimum equity injection, so the SBA 7(a) loan shrinks to fill the rest, ' +
+        pct0(s.injectionPct) + ' of the project funded by the raise. Less debt against the same ' +
+        'operating income lifts stabilized coverage to ' + xfmt(s.dscr) + '.' + compare;
+    } else {
+      document.getElementById('askTitle').textContent =
+        moneyM(s.projectCost) + ' to build the ' + s.label.toLowerCase() + ' case.';
+      var alt = scen === 'lean' ? D.scenarios.ample : D.scenarios.lean;
+      document.getElementById('askIntro').textContent =
+        s.tagline + ' The loan sits inside the SBA 7(a) $5,000,000 ceiling.' +
+        (alt ? ' A ' + (scen === 'lean' ? 'larger, ' + moneyM(alt.projectCost) + ' "ample"'
+                                        : 'tighter, ' + moneyM(alt.projectCost) + ' "lean"') +
+               ' case is presented as a separate brief with its own deck.' : '');
+    }
+  }
+
+  function render(){
+    var s = D.scenarios[scen];
+    renderScenarioChrome(s);
+    // Copy that only holds when the scenario sells day passes. Ample withdrew
+    // them in Aug 2026; lean and surgical still offer them, and all five sites
+    // share this one template, so the prose has to switch rather than be cut.
+    document.getElementById('scopeN').textContent = s.scope.licensed + ' of ' + s.scope.total;
+    document.getElementById('scopeL').textContent =
+      'Services on the L&K menu that require a physician, nurse practitioner or nurse. '
+      + 'A recovery studio without a physician can offer ' + s.scope.openToAnyone + '.';
+
+    var hasDayPass = s.accessRevenue > 0;
+    Array.prototype.forEach.call(document.querySelectorAll('.dp'), function(n){
+      n.style.display = hasDayPass ? '' : 'none';
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.ndp'), function(n){
+      n.style.display = hasDayPass ? 'none' : '';
+    });
+    bind(s);
+    renderClinicChips(s); renderSurgery(s);
+    renderTiers(s); renderSpace(s); renderCapacity(s); renderServices(s);
+    renderWaterfall(s); renderRamp(s); renderPL(s); renderBand(s);
+    renderAskGrid(s); renderUOF(s); renderSBA(s); renderTeam(s); renderRisks(s);
+    syncSwitch();
+  }
+
+  // Scroll spy for the section nav.
+  var links = Array.prototype.slice.call(document.querySelectorAll('#secnav a'));
+  var targets = links.map(function(a){ return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
+  if ('IntersectionObserver' in window && targets.length) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    targets.forEach(function(t){ io.observe(t); });
+  }
+
+  renderStatic();
+  render();
+})();
+</script>
+</body>
+</html>
