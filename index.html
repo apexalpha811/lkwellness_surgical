@@ -451,7 +451,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
       <a href="#economics">Economics</a>
       <a href="#ramp">Ramp</a>
       <a href="#ask">Ask</a>
+      <a href="#ratchet" hidden>Ratchet</a>
       <a href="#sba" id="navSba">SBA</a>
+      <a href="#followon" hidden>Follow-on</a>
+      <a href="#exit" hidden>Exit</a>
       <a href="#team">Team</a>
     </nav>
     <div id="scenControl"></div>
@@ -553,7 +556,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 <section id="offering">
   <div class="eyebrow">The offering</div>
   <h2 id="offeringTitle"></h2>
-  <p class="lead mt">The information architecture borrows from how a health club organizes itself rather than how a clinic does. Patients do not shop by billing code; they arrive wanting to feel a specific way.</p>
+  <p class="lead mt" id="offeringLead"></p>
   <div class="grid g3 mt2" id="verbGrid"></div>
 </section>
 
@@ -595,7 +598,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 <section id="membership">
   <div class="eyebrow">Membership architecture</div>
   <h2>A ladder, not a gate.</h2>
-  <p class="lead mt"><span id="tierCount">Four tiers</span>, each a genuine step up rather than a repackaging of the last. The cheap annual tier is the funnel; the capped monthly tiers are the business. Mechanics follow the proven playbook: a three-month minimum then month-to-month, credits that roll over while active and expire on cancellation, freezes on seven days' notice, tier changes after the initial commitment.</p>
+  <p class="lead mt"><span id="tierCount">Four tiers</span>, each representing a meaningful step up rather than a repackaging of the last. The accessible annual tier serves as the entry point; the capped monthly tiers drive the core business. Mechanics follow a proven playbook: a three-month initial commitment followed by month-to-month billing, credits that roll over while membership remains active and expire upon cancellation, freezes with seven days’ notice, and tier changes available after the initial commitment.</p>
   <div class="tiergrid" id="tierGrid"></div>
 
   <div class="card accent mt2">
@@ -607,15 +610,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
 
 <!-- 7 · FUNNEL -->
 <section id="funnel">
-  <div class="eyebrow">How the ladder fills</div>
-  <h2>The open clinic is the top of the funnel.</h2>
-  <p class="lead mt">Because anyone can book a procedure without joining, every non-member treatment is a paid introduction. The conversion path runs in one direction and each step is cheap to take.</p>
-  <div class="grid g4 mt2">
-    <div class="card"><div class="pill">Step one</div><h3 class="mt">Walks in</h3><p class="muted mt small">Books a procedure<span class="dp"> or buys a day pass</span>. Pays list price. Owes nothing further.</p></div>
-    <div class="card"><div class="pill">Step two</div><h3 class="mt">Becomes a Friend</h3><p class="muted mt small">$300 a year pays for itself on roughly two procedures. Low friction, high volume, and it captures the database.</p></div>
-    <div class="card"><div class="pill">Step three</div><h3 class="mt">Becomes a Resident</h3><p class="muted mt small">Wants the circuit and the room, not just the treatment. This is where recurring revenue begins.</p></div>
-    <div class="card accent"><div class="pill on">Step four</div><h3 class="mt">Becomes Longevity</h3><p class="muted mt small">Physician-delivered programming. Hard capped. The highest retention and the highest lifetime value in the building.</p></div>
-  </div>
+  <div class="eyebrow" id="funnelEyebrow"></div>
+  <h2 id="funnelTitle"></h2>
+  <p class="lead mt" id="funnelLead"></p>
+  <div class="grid g4 mt2" id="funnelGrid"></div>
 </section>
 
 <!-- 8 · SPACE -->
@@ -754,6 +752,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
   </div>
 </section>
 
+<!-- 17b · RATCHET, priced round only -->
+<section id="ratchet" hidden>
+  <div class="eyebrow">Structure</div>
+  <h2>Aligned Downside Protection</h2>
+  <p class="lead mt">The stake is priced against delivery. If the business underperforms, the investor owns more of it.</p>
+  <div class="disc mt2" id="ratchetPoints"></div>
+  <div class="tablewrap mt2">
+    <table>
+      <thead><tr><th>Scenario</th><th class="n">Operating income /yr</th><th class="n">Investor ownership</th><th class="n">Investor cash /yr</th><th class="n">Founder retained /yr</th></tr></thead>
+      <tbody id="ratchetBody"></tbody>
+    </table>
+  </div>
+  <p class="faint mt2 xs" id="ratchetNote" style="line-height:1.7"></p>
+</section>
+
 <!-- 18 · SBA -->
 <section id="sba">
   <div class="eyebrow" id="sbaEyebrow">SBA package</div>
@@ -780,6 +793,39 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
   </div>
 
   <p class="faint mt2 xs" id="sbaFootnote" style="line-height:1.7">SBA 7(a) caps at a $5,000,000 loan, with SBA's maximum guarantee exposure at $3,750,000. SOP 50 10 8 requires a minimum 10% equity injection for a startup; lenders routinely require more of a business with no operating history, which is why both figures appear above. An unconditional personal guaranty is required from any owner holding 20% or more. Rate assumption: WSJ Prime 6.75% plus the 2.75% maximum spread permitted on loans over $350,000. The 1.25x coverage threshold is prevailing lender underwriting convention, not an SBA regulation.</p>
+</section>
+
+<!-- 18b · FOLLOW-ON RIGHTS, priced round only -->
+<section id="followon" hidden>
+  <div class="eyebrow">Follow-on rights</div>
+  <h2>Investing Beyond Location One</h2>
+  <p class="lead mt">Playa Vista is the first building, and the terms treat it that way.</p>
+  <div class="disc mt2" id="followonPoints"></div>
+  <p class="faint mt2 xs" style="line-height:1.7">No location beyond Playa Vista exists today. Pro-rata rights are a mechanism, not a pipeline, and are indicative terms subject to definitive documents.</p>
+</section>
+
+<!-- 18c · EXIT, priced round only -->
+<section id="exit" hidden>
+  <div class="eyebrow">Exit</div>
+  <h2>How Investors Realize Value</h2>
+  <p class="lead mt">Three paths, in the order they are most likely to matter.</p>
+  <div class="grid g2 mt2">
+    <div class="card">
+      <h3>The paths</h3>
+      <div class="disc mt" id="exitPaths"></div>
+    </div>
+    <div class="card">
+      <h3>Published EBITDA multiples</h3>
+      <div class="tablewrap plain mt">
+        <table>
+          <thead><tr><th>Asset type</th><th class="n">Range</th></tr></thead>
+          <tbody id="exitMultiples"></tbody>
+        </table>
+      </div>
+      <p class="mt" id="exitMembership"></p>
+    </div>
+  </div>
+  <p class="faint mt2 xs" id="exitSource" style="line-height:1.7"></p>
 </section>
 
 <!-- 19 · TIMELINE -->
@@ -893,16 +939,30 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
   }
 
   // ---- static renders (scenario-independent) ----
+  function renderFunnel(s){
+    var F = D.copy.funnel;
+    document.getElementById('funnelEyebrow').textContent = F.eyebrow;
+    document.getElementById('funnelTitle').textContent = F.title;
+    document.getElementById('funnelLead').textContent = F.lead;
+    var g = document.getElementById('funnelGrid');
+    clear(g);
+    F.steps.forEach(function(step){
+      var c = el('div','card' + (step.accent ? ' accent' : ''));
+      c.appendChild(el('div','pill' + (step.accent ? ' on' : ''), step.pill));
+      c.appendChild(el('h3','mt', step.title));
+      var body = (step.bodyDayPass && s.accessRevenue > 0) ? step.bodyDayPass : step.body;
+      c.appendChild(el('p','muted mt small', body));
+      g.appendChild(c);
+    });
+  }
+
   function renderStatic(){
-    var VERBS = [
-      ['Restore','Regenerative','Six PRP protocols, therapeutic medications, a ten-drip infusion menu and NAD+ by dose.'],
-      ['Renew','Aesthetics','Neuromodulators and filler, RF microneedling, laser resurfacing.'],
-      ['Recover','Recovery','Hyperbaric oxygen, Ammortal chambers, robotic massage, compression, red light.'],
-      ['Reset','Diagnostics','Advanced biometrics, DEXA, DUTCH, DNA analysis. The baseline everything else is measured against.'],
-      ['Reconnect','The Club','The contrast suite, the Lounge, member events and guest privileges. The reason people come back when nothing hurts.']
-    ];
+    // The verbs and the funnel steps come from the payload rather than from
+    // this file, because the deck presents the same two sections and the copy
+    // is held once in deck-build/copy.js. See the note at the top of it.
+    document.getElementById('offeringLead').textContent = D.copy.offering.lead;
     var vg = document.getElementById('verbGrid');
-    VERBS.forEach(function(v){
+    D.copy.offering.verbs.forEach(function(v){
       var c = el('div','card');
       c.appendChild(el('div','eyebrow', v[0]));
       c.appendChild(el('h3', null, v[1]));
@@ -1255,7 +1315,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
     // On a private raise the injection is a committed number, so the 10%/20%
     // framing is meaningless, show the raise and what share of the project
     // it covers instead.
-    var cells = s.allEquity
+    var cells = s.deal
+      ? [['Total raise', money(s.projectCost)],
+         ['Starting stake', pct0(s.deal.startStake)],
+         ['Pre-money', money(s.deal.start.pre)],
+         ['Post-money', money(s.deal.start.post)]]
+      : s.allEquity
       ? [['Total raise', money(s.projectCost)],
          ['Stabilized operating income', money(s.operatingIncome) + ' / mo'],
          ['Unlevered yield on equity', pct1(s.unleveredYield)],
@@ -1294,6 +1359,91 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
     tb.appendChild(tot);
   }
 
+  // The priced round: three sections that exist only for ample's private
+  // brief. They ship hidden in every other site off the same template, the way
+  // the surgery section does, so nothing here can leak into a brief that has
+  // no cap table.
+  function renderDeal(s){
+    var d = s.deal;
+    ['ratchet', 'followon', 'exit'].forEach(function(id){
+      var sec = document.getElementById(id);
+      if (sec) sec.hidden = !d;
+      var nav = document.querySelector('#secnav a[href="#' + id + '"]');
+      if (nav) nav.hidden = !d;
+    });
+    if (!d) return;
+
+    var pts = document.getElementById('ratchetPoints');
+    clear(pts);
+    [
+      'Investors start at ' + pct0(d.startStake) + ', priced against base-case stabilized operating income of ' + moneyM(s.operatingIncomeAnnual) + ' a year.',
+      'If trailing twelve-month operating income at stabilization lands below ' + money(d.threshold) + ', ownership steps up on a straight line toward a hard cap of ' + pct0(d.capStake) + ', reached at the low case of ' + money(d.floor) + '.',
+      'At or above base case the investor stays at ' + pct0(d.startStake) + ' and the founder keeps the upside. The ratchet only moves one way.'
+    ].forEach(function(t){ pts.appendChild(el('p', null, t)); });
+
+    var tb = document.getElementById('ratchetBody');
+    clear(tb);
+    d.cases.forEach(function(c){
+      var tr = el('tr');
+      cell(tr, null, c.label + ' case');
+      cell(tr, 'n', money(c.operating));
+      var own = el('td', 'n', pct0(c.ownership));
+      if (c.ownership > d.startStake) own.style.color = 'var(--rose)';
+      tr.appendChild(own);
+      cell(tr, 'n', money(c.investor));
+      cell(tr, 'n', money(c.founder));
+      tb.appendChild(tr);
+    });
+
+    document.getElementById('ratchetNote').textContent =
+      'In valuation terms the ratchet is exactly a halving of the pre-money, ' + money(d.start.pre) +
+      ' to ' + money(d.cap.pre) + '. It cushions the downside without making the investor whole: at ' +
+      'the low case ' + pct0(d.capStake) + ' of ' + moneyM(d.floor) + ' is ' + money(d.cases[0].investor) +
+      ', still below the ' + money(d.cases[1].investor) + ' that ' + pct0(d.startStake) +
+      ' of base case pays. Indicative terms, subject to definitive documents.';
+
+    var fo = document.getElementById('followonPoints');
+    clear(fo);
+    [
+      'Location 1 is the proof of concept. It has to open, fill and stabilize before anything else is contemplated, and every figure in this brief describes that one building.',
+      'Round 1 investors receive pro-rata rights, not obligations, to invest in future locations at the same or improved terms, in proportion to their original stake. A ' + pct0(d.startStake) + ' holder can maintain ' + pct0(d.startStake) + ' of the platform without being required to.',
+      'Future locations target comparable high-income coastal and Westside markets, and only once Location 1 reaches stabilization.',
+      'The ' + pct0(d.reserveShare) + ' expansion reserve shown on the capital section is what funds that optionality out of operating cash rather than out of a second raise. An investor who would rather take the cash can read the full-distribution column instead; the two are shown side by side because this is the actual trade.'
+    ].forEach(function(t){ fo.appendChild(el('p', null, t)); });
+
+    var paths = document.getElementById('exitPaths');
+    clear(paths);
+    [
+      'Buyback. The company holds a right, not an obligation, to repurchase investor equity in a defined window in years ' + d.buybackWindow[0] + ' to ' + d.buybackWindow[1] + ', priced off a formula tied to trailing twelve-month operating income at a multiple agreed in the definitive documents.',
+      'Right of first refusal. If a third-party offer for the business is received, existing investors get the first right to match it before any outside sale proceeds.',
+      'Strategic sale. The primary long-term path. Multi-location platforms trade at materially higher multiples than single-location assets, so the value of building a second and third location is realised at exit rather than only in operating cash.'
+    ].forEach(function(t){ paths.appendChild(el('p', null, t)); });
+
+    var mt = document.getElementById('exitMultiples');
+    clear(mt);
+    [['Single location, owner is primary provider', '3.5x to 5.0x'],
+     ['Single location, strong operator with SOPs', '5.0x to 6.5x'],
+     ['Multi-location, two or more with management', '6.0x to 7.5x'],
+     ['Multi-location, provider bench and recurring revenue', '7.0x to 9.0x'],
+     ['Membership revenue premium', '+0.5x to 1.0x']
+    ].forEach(function(r){
+      var tr = el('tr');
+      cell(tr, null, r[0]);
+      cell(tr, 'n', r[1]);
+      mt.appendChild(tr);
+    });
+
+    document.getElementById('exitMembership').textContent =
+      'L&K runs ' + pct1(d.membershipShare) + ' of revenue from memberships and access, above the ' +
+      '30% to 40% band that source names as a premium driver.';
+
+    document.getElementById('exitSource').textContent =
+      'Multiples: ' + D.citation.who + ', ' + D.citation.when + '. ' + D.citation.url +
+      '  ·  Industry M&A comparables, not company projections. The entry price on this round is ' +
+      xfmt(d.start.multiple) + ' base-case operating income, inside the single-location band above ' +
+      'and below every multi-location band.';
+  }
+
   // The all-equity brief has no lender, so the SBA section becomes a capital
   // and returns section. It reuses the same two cards rather than adding a
   // parallel block of markup, because all five of the other briefs share this
@@ -1303,20 +1453,30 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
     document.getElementById('sbaEyebrow').textContent = 'Capital and returns';
     document.getElementById('sbaTitle').textContent =
       'Funded entirely with equity. Nothing sits ahead of the investor.';
-    document.getElementById('sbaStructTitle').textContent = 'Sources and uses';
-    document.getElementById('dscrCardTitle').textContent = 'Operating income by year';
+    document.getElementById('sbaStructTitle').textContent = s.deal ? 'Capital structure' : 'Sources and uses';
+    document.getElementById('dscrCardTitle').textContent = s.deal ? 'What the stake earns' : 'Operating income by year';
 
     var box = document.getElementById('sbaStruct');
     clear(box);
-    [['Total project cost', money(s.projectCost)],
-     ['Equity raised', money(s.projectCost)],
-     ['Senior debt', 'None'],
-     ['Working capital reserve', money(s.reserve)],
-     ['Modeled cash trough', money(Math.abs(s.trough.amount)) + ' at month ' + s.trough.month],
-     ['Stabilized operating income', money(s.operatingIncome) + ' / mo'],
-     ['Unlevered yield on equity', pct1(s.unleveredYield)],
-     ['Equity payback', 'month ' + s.paybackMonth.month + (s.paybackMonth.extrapolated ? ', extrapolated' : '')]
-    ].forEach(function(r){ box.appendChild(kv(r[0], r[1])); });
+    (s.deal
+      ? [['Total project cost', money(s.projectCost)],
+         ['Senior debt', 'None'],
+         ['Starting stake', pct0(s.deal.startStake)],
+         ['Pre-money valuation', money(s.deal.start.pre)],
+         ['Post-money valuation', money(s.deal.start.post)],
+         ['Entry multiple, base case', xfmt(s.deal.start.multiple) + ' operating income'],
+         ['Working capital reserve', money(s.reserve)],
+         ['Modeled cash trough', money(Math.abs(s.trough.amount)) + ' at month ' + s.trough.month],
+         ['Equity payback', 'month ' + s.paybackMonth.month + (s.paybackMonth.extrapolated ? ', extrapolated' : '')]]
+      : [['Total project cost', money(s.projectCost)],
+         ['Equity raised', money(s.projectCost)],
+         ['Senior debt', 'None'],
+         ['Working capital reserve', money(s.reserve)],
+         ['Modeled cash trough', money(Math.abs(s.trough.amount)) + ' at month ' + s.trough.month],
+         ['Stabilized operating income', money(s.operatingIncome) + ' / mo'],
+         ['Unlevered yield on equity', pct1(s.unleveredYield)],
+         ['Equity payback', 'month ' + s.paybackMonth.month + (s.paybackMonth.extrapolated ? ', extrapolated' : '')]]
+    ).forEach(function(r){ box.appendChild(kv(r[0], r[1])); });
 
     var head = document.getElementById('dscrHead');
     clear(head);
@@ -1327,25 +1487,64 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
     });
     head.appendChild(hr);
 
+    var head = document.getElementById('dscrHead');
+    clear(head);
+    var hr = el('tr');
+    (s.deal
+      ? ['Case', 'Investor cash /yr', 'Yield', 'After reserve']
+      : ['Year', 'Operating income', 'Cumulative cash']
+    ).forEach(function(h, i){ hr.appendChild(el('th', i ? 'n' : null, h)); });
+    head.appendChild(hr);
+
     var tb = document.getElementById('dscrBody');
     clear(tb);
-    s.dscrByYear.forEach(function(y){
-      var tr = el('tr');
-      cell(tr, null, 'Year ' + y.year);
-      cell(tr, 'n', signed(y.operating));
-      // Off the ramp, not a running total of operating income: founding
-      // prepayments land during construction and belong in cumulative cash.
-      cell(tr, 'n', signed(s.ramp[Math.min(y.year * 12, s.ramp.length) - 1].cumulativeCash));
-      tb.appendChild(tr);
-    });
-    var tot = el('tr','total');
-    cell(tot, null, 'Stabilized run rate');
-    cell(tot, 'n', money(s.operatingIncomeAnnual) + ' / yr');
-    cell(tot, 'n', signed(s.cumulativeCash36));
-    tb.appendChild(tot);
+    if (s.deal) {
+      // Two distribution assumptions side by side. The follow-on section asks
+      // the investor to fund location two out of this same cash, so showing
+      // only the full-distribution column would contradict it.
+      s.deal.cases.forEach(function(c){
+        var tr = el('tr');
+        cell(tr, null, c.label);
+        cell(tr, 'n', money(c.investor));
+        cell(tr, 'n', pct1(c.investorYield));
+        cell(tr, 'n', pct1(c.investorNetYield));
+        tb.appendChild(tr);
+      });
+      var ft = el('tr','total');
+      cell(ft, null, 'Founder');
+      cell(ft, 'n', money(s.deal.cases[1].founder));
+      cell(ft, 'n', pct0(s.deal.cases[1].founderShare));
+      cell(ft, 'n', 'at base case');
+      tb.appendChild(ft);
+    } else {
+      s.dscrByYear.forEach(function(y){
+        var tr = el('tr');
+        cell(tr, null, 'Year ' + y.year);
+        cell(tr, 'n', signed(y.operating));
+        // Off the ramp, not a running total of operating income: founding
+        // prepayments land during construction and belong in cumulative cash.
+        cell(tr, 'n', signed(s.ramp[Math.min(y.year * 12, s.ramp.length) - 1].cumulativeCash));
+        tb.appendChild(tr);
+      });
+      var tot = el('tr','total');
+      cell(tot, null, 'Stabilized run rate');
+      cell(tot, 'n', money(s.operatingIncomeAnnual) + ' / yr');
+      cell(tot, 'n', signed(s.cumulativeCash36));
+      tb.appendChild(tot);
+    }
 
-    document.getElementById('sbaFootnote').textContent =
-      'Cumulative cash includes the ' + money(s.founding.proceeds) + ' of founding-member ' +
+    document.getElementById('sbaFootnote').textContent = s.deal
+      ? 'Yield is the investor share of operating income against the ' + moneyM(s.deal.raise) +
+        ' invested, assuming it is distributed in full. After reserve holds back ' +
+        pct0(s.deal.reserveShare) + ' of operating income as retained cash for the second ' +
+        'location, which is what the follow-on section depends on. Both are stated before tax ' +
+        'and before maintenance capital, and neither is a promise to distribute. Cumulative ' +
+        'cash across the modelled 36 months is ' + money(s.cumulativeCash36) + ', including the ' +
+        money(s.founding.proceeds) + ' of founding-member prepayments collected during ' +
+        'construction. No internal rate of return is projected: the paths by which an investor ' +
+        'realises value are set out below. Every figure here is indicative and subject to ' +
+        'definitive documents.'
+      : 'Cumulative cash includes the ' + money(s.founding.proceeds) + ' of founding-member ' +
       'prepayments collected during construction, which is why Year 1 ends positive on a ' +
       'negative operating year. ' +
       'Unlevered yield on equity is stabilized annual operating income divided by the total ' +
@@ -1379,10 +1578,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
           (s.reserve / Math.abs(s.trough.amount)).toFixed(1) + ' times over. It is sized ' +
           'against that trough rather than to a round number.'),
 
-      'The whole project is funded with equity, so every dollar of operating income accrues ' +
-      'to the investor rather than being split with a lender. The other side of that is ' +
-      'the absence of leverage: the same business financed with debt would put less cash at ' +
-      'risk for the same operating income, and would also put a lender ahead of the equity.',
+      (s.deal
+        ? 'The ratchet cushions the downside without making the investor whole. At the low case ' +
+          pct0(s.deal.capStake) + ' of ' + moneyM(s.deal.floor) + ' pays ' + money(s.deal.cases[0].investor) +
+          ', which is still less than the ' + money(s.deal.cases[1].investor) + ' that ' +
+          pct0(s.deal.startStake) + ' of base case pays. Every ownership percentage, valuation ' +
+          'and buyback term in this brief is indicative and subject to definitive documents.'
+        : 'The whole project is funded with equity, so every dollar of operating income accrues ' +
+          'to the investor rather than being split with a lender. The other side of that is ' +
+          'the absence of leverage: the same business financed with debt would put less cash at ' +
+          'risk for the same operating income, and would also put a lender ahead of the equity.'),
 
       'Volume is flexed to 72% of base in the low case and the business still produces ' +
       moneyM(s.band[0].annual) + ' of annual operating income. Fixed overhead is held ' +
@@ -1392,6 +1597,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
       'guarantees. Market and demographic figures carry their sources; anything unsourced ' +
       'was cut rather than estimated.'
     ];
+    if (s.deal) {
+      items.splice(3, 0,
+        'The multi-location expansion and platform exit thesis represent optionality this ' +
+        'structure creates, not a guaranteed roadmap. No location beyond Playa Vista currently ' +
+        'exists, and all forward-looking multiples are sourced from industry M&A comparables, ' +
+        'not company-specific projections.');
+    }
     items.forEach(function(t){ d.appendChild(el('p', null, t)); });
   }
 
@@ -1623,7 +1835,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
       'Five verbs, ' + word.toLowerCase() + ' revenue lines.';
     document.getElementById('econTitle').textContent =
       word + ' lines, every one cash-pay.';
-    if (s.allEquity) {
+    if (s.deal) {
+      document.getElementById('askTitle').textContent =
+        moneyM(s.projectCost) + ' for ' + pct0(s.deal.startStake) + ', ratcheted.';
+      document.getElementById('askIntro').textContent =
+        s.tagline + ' The entire project is funded with equity, so no lender sits ahead of the ' +
+        'investor. The stake starts at ' + pct0(s.deal.startStake) + ' against a ' +
+        money(s.deal.start.pre) + ' pre-money valuation, and ratchets toward ' +
+        pct0(s.deal.capStake) + ' if trailing operating income at stabilization comes in under ' +
+        moneyM(s.deal.threshold) + '. At base case the round prices at ' +
+        xfmt(s.deal.start.multiple) + ' operating income, inside the published range for a ' +
+        'single location under a strong operator. Indicative terms, subject to definitive documents.';
+    } else if (s.allEquity) {
       document.getElementById('askTitle').textContent =
         moneyM(s.projectCost) + ' of equity. No debt in the structure.';
       document.getElementById('askIntro').textContent =
@@ -1678,10 +1901,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rose);outline-offse
       n.style.display = hasDayPass ? 'none' : '';
     });
     bind(s);
-    renderClinicChips(s); renderSurgery(s);
+    renderClinicChips(s); renderSurgery(s); renderFunnel(s);
     renderTiers(s); renderSpace(s); renderCapacity(s); renderServices(s);
     renderWaterfall(s); renderRamp(s); renderPL(s); renderBand(s);
-    renderAskGrid(s); renderUOF(s); renderSBA(s); renderTeam(s); renderRisks(s);
+    renderAskGrid(s); renderUOF(s); renderDeal(s); renderSBA(s); renderTeam(s); renderRisks(s);
     syncSwitch();
   }
 
